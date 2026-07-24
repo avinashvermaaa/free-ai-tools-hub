@@ -11,3 +11,8 @@ Always use the following prefixes for git commit messages:
 - `docs :- ` for documentation updates
 - `test :- ` for adding or modifying tests
 - `refactor :- ` for refactoring code changes without changes to behavior
+
+# Build Guidelines
+
+Do not run builds (`npm run build`) automatically. The user will perform all build tasks manually.
+
