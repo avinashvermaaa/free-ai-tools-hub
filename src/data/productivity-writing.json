@@ -1,0 +1,9 @@
+[
+  { "name": "Grammarly", "url": "https://www.grammarly.com", "desc": "AI writing assistant" },
+  { "name": "Notion AI", "url": "https://www.notion.so", "desc": "AI-powered notes & docs" },
+  { "name": "Jasper AI", "url": "https://www.jasper.ai", "desc": "AI content & copywriting" },
+  { "name": "Perplexity", "url": "https://www.perplexity.ai", "desc": "AI search & research" },
+  { "name": "Gamma", "url": "https://gamma.app", "desc": "AI presentation generator" },
+  { "name": "Otter.ai", "url": "https://otter.ai", "desc": "AI meeting transcription" },
+  { "name": "TLDR This", "url": "https://tldrthis.com", "desc": "AI article summarizer" }
+]

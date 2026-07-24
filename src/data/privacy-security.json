@@ -1,0 +1,7 @@
+[
+  { "name": "Brave Browser", "url": "https://brave.com", "desc": "Privacy-focused browser blocking ads and trackers automatically" },
+  { "name": "ProtonMail", "url": "https://proton.me/mail", "desc": "Secure, encrypted email service based in Switzerland" },
+  { "name": "KeepassXC", "url": "https://keepassxc.org", "desc": "Offline, open-source password manager with robust security" },
+  { "name": "Tor Project", "url": "https://www.torproject.org", "desc": "Open-source software for enabling anonymous communication" },
+  { "name": "Bitwarden", "url": "https://bitwarden.com", "desc": "Open-source password manager with end-to-end encryption" }
+]

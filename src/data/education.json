@@ -1,0 +1,6 @@
+[
+  { "name": "Khan Academy", "url": "https://www.khanacademy.org", "desc": "Free online courses, lessons, and practice for students worldwide" },
+  { "name": "Duolingo", "url": "https://www.duolingo.com", "desc": "Gamified language learning platform accessible to everyone for free" },
+  { "name": "Coursera (Free Courses)", "url": "https://www.coursera.org", "desc": "Access high-quality university courses and audits free of charge" },
+  { "name": "edX", "url": "https://www.edx.org", "desc": "Free audit tracks for top-tier academic courses and technical lectures" }
+]

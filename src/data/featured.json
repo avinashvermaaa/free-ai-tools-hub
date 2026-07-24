@@ -1,0 +1,38 @@
+[
+  {
+    "name": "hoppscotch",
+    "url": "https://hoppscotch.io",
+    "desc": "Open-Source API Development Ecosystem. Alternative to Postman, Insomnia",
+    "tags": ["postman", "api", "test"],
+    "category": "Development",
+    "categoryIcon": "💻",
+    "stars": "79.8k",
+    "license": "MIT",
+    "icon": "💻",
+    "featured": true
+  },
+  {
+    "name": "drawDB",
+    "url": "https://www.drawdb.app",
+    "desc": "Free, simple, and intuitive online database diagram editor and SQL generator",
+    "tags": ["database", "erd", "sql", "schema"],
+    "category": "Development",
+    "categoryIcon": "💻",
+    "stars": "38.1k",
+    "license": "AGPL-3.0",
+    "icon": "💻",
+    "featured": true
+  },
+  {
+    "name": "RegExr",
+    "url": "https://regexr.com",
+    "desc": "HTML/JS based tool for creating, testing, and learning about Regular Expressions",
+    "tags": ["regex", "pattern-matching"],
+    "category": "Development",
+    "categoryIcon": "💻",
+    "stars": "10.3k",
+    "license": "GPL-3.0",
+    "icon": "💻",
+    "featured": true
+  }
+]

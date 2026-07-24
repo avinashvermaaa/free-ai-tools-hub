@@ -1,0 +1,14 @@
+[
+  { "name": "GitHub Copilot", "url": "https://github.com/features/copilot", "desc": "AI pair programmer" },
+  { "name": "Cursor", "url": "https://cursor.sh", "desc": "AI-first code editor" },
+  { "name": "Claude (Anthropic)", "url": "https://claude.ai", "desc": "AI assistant for code & reasoning" },
+  { "name": "ChatGPT", "url": "https://chatgpt.com", "desc": "General AI assistant" },
+  { "name": "Hermes Agent", "url": "https://hermes-agent.nousresearch.com", "desc": "Autonomous AI coding agent" },
+  { "name": "Vercel AI SDK", "url": "https://sdk.vercel.ai", "desc": "AI integration for web apps" },
+  { "name": "Supabase", "url": "https://supabase.com", "desc": "Open-source Firebase with AI" },
+  { "name": "Replit AI", "url": "https://replit.com", "desc": "AI-assisted cloud IDE" },
+  { "name": "Codeium / Windsurf", "url": "https://codeium.com", "desc": "Free AI code completion" },
+  { "name": "Tabnine", "url": "https://www.tabnine.com", "desc": "AI code completion & chat" },
+  { "name": "Cline", "url": "https://github.com/cline/cline", "desc": "Autonomous coding in VS Code" },
+  { "name": "OpenAI API", "url": "https://platform.openai.com", "desc": "LLM APIs for devs" }
+]

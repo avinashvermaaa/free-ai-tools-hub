@@ -1,0 +1,7 @@
+[
+  { "name": "Hugging Face", "url": "https://huggingface.co", "desc": "ML model hub & tools" },
+  { "name": "Replicate", "url": "https://replicate.com", "desc": "Run open-source AI models" },
+  { "name": "Figma AI", "url": "https://www.figma.com", "desc": "AI design tools" },
+  { "name": "Uizard", "url": "https://uizard.io", "desc": "AI UI design from screenshots" },
+  { "name": "Brandmark", "url": "https://brandmark.io", "desc": "AI logo generator" }
+]

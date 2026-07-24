@@ -1,0 +1,7 @@
+[
+  { "name": "Suno AI", "url": "https://suno.ai", "desc": "AI music generation from text" },
+  { "name": "ElevenLabs", "url": "https://elevenlabs.io", "desc": "AI voice cloning & TTS" },
+  { "name": "Adobe Podcast", "url": "https://podcast.adobe.com", "desc": "AI audio enhancement" },
+  { "name": "Murf AI", "url": "https://murf.ai", "desc": "AI voiceover generator" },
+  { "name": "AIVA", "url": "https://www.aiva.ai", "desc": "AI music composition" }
+]

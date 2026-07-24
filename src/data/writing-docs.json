@@ -1,0 +1,8 @@
+[
+  { "name": "Notion AI", "url": "https://www.notion.so/product/ai", "desc": "AI assistant built inside Notion workspaces" },
+  { "name": "Grammarly", "url": "https://www.grammarly.com", "desc": "AI writing assistant and grammar checker" },
+  { "name": "Copy.ai", "url": "https://www.copy.ai", "desc": "AI copywriting tool for marketing content" },
+  { "name": "Jasper AI", "url": "https://www.jasper.ai", "desc": "AI content generator for teams and businesses" },
+  { "name": "QuillBot", "url": "https://quillbot.com", "desc": "AI-powered paraphrasing and summarization tool" },
+  { "name": "DeepL Write", "url": "https://www.deepl.com/write", "desc": "AI writing companion for tone and style improvements" }
+]

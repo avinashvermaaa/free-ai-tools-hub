@@ -1,0 +1,6 @@
+[
+  { "name": "Tableau Public", "url": "https://public.tableau.com", "desc": "Free platform to explore, create, and publicly share data visualizations" },
+  { "name": "Google Looker Studio", "url": "https://lookerstudio.google.com", "desc": "Free tool to convert data into customizable informative reports and dashboards" },
+  { "name": "Mixpanel", "url": "https://mixpanel.com", "desc": "Product analytics for mobile & web with free tier for tracking events" },
+  { "name": "Metabase", "url": "https://www.metabase.com", "desc": "Open-source business intelligence tool that simplifies database querying" }
+]

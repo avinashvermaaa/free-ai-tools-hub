@@ -1,0 +1,10 @@
+[
+  { "name": "Runway Gen-3", "url": "https://runwayml.com", "desc": "Text-to-video, video-to-video" },
+  { "name": "Pika Labs", "url": "https://pika.art", "desc": "AI video generation & editing" },
+  { "name": "HeyGen", "url": "https://www.heygen.com", "desc": "AI avatar & video dubbing" },
+  { "name": "Synthesia", "url": "https://www.synthesia.io", "desc": "AI video generation with avatars" },
+  { "name": "CapCut", "url": "https://www.capcut.com", "desc": "AI video editor by ByteDance" },
+  { "name": "Descript", "url": "https://www.descript.com", "desc": "AI-powered video & audio editing" },
+  { "name": "VidIQ", "url": "https://vidiq.com", "desc": "AI YouTube growth & optimization" },
+  { "name": "Opus Clip", "url": "https://opus.pro", "desc": "AI clip generator from long videos" }
+]

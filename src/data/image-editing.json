@@ -1,0 +1,12 @@
+[
+  { "name": "Adobe Photoshop (Generative Fill)", "url": "https://www.adobe.com/products/photoshop.html", "desc": "AI-powered generative fill & expand" },
+  { "name": "Midjourney", "url": "https://www.midjourney.com", "desc": "Text-to-image generation" },
+  { "name": "DALL·E 3", "url": "https://openai.com/dall-e-3", "desc": "OpenAI image generation" },
+  { "name": "Stable Diffusion", "url": "https://stability.ai", "desc": "Open-source image generation" },
+  { "name": "Clipdrop", "url": "https://clipdrop.co", "desc": "Background removal, relight, cleanup" },
+  { "name": "Runway ML", "url": "https://runwayml.com", "desc": "AI video & image editing tools" },
+  { "name": "Remini", "url": "https://remini.ai", "desc": "AI photo enhancer & restore" },
+  { "name": "Adobe Firefly", "url": "https://firefly.adobe.com", "desc": "Generative AI for creatives" },
+  { "name": "Leonardo AI", "url": "https://leonardo.ai", "desc": "AI art & asset generation" },
+  { "name": "Canva AI", "url": "https://www.canva.com", "desc": "AI design & content creation" }
+]
