@@ -1,5 +1,53 @@
 [
-  { "name": "Awesome AI", "url": "https://github.com/steven2358/awesome-generative-ai", "desc": "Curated list of awesome generative AI projects, libraries, and resources" },
-  { "name": "AlternativeTo", "url": "https://alternativeto.net", "desc": "Crowdsourced database of software alternatives and recommendation lists" },
-  { "name": "Product Hunt", "url": "https://www.producthunt.com", "desc": "Daily curated list and launchpad for new software products and AI tools" }
+  {
+    "id": "awesome-ai",
+    "name": "Awesome AI",
+    "description": "Curated list of awesome generative AI projects, libraries, and resources",
+    "url": "https://github.com/steven2358/awesome-generative-ai",
+    "category": "lists",
+    "tags": [
+      "ai",
+      "awesome",
+      "lists"
+    ],
+    "github": "https://github.com/search?q=Awesome%20AI",
+    "license": "AGPL-3.0",
+    "stars": 36900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "alternativeto",
+    "name": "AlternativeTo",
+    "description": "Crowdsourced database of software alternatives and recommendation lists",
+    "url": "https://alternativeto.net",
+    "category": "lists",
+    "tags": [
+      "ai",
+      "alternativeto",
+      "lists"
+    ],
+    "github": "https://github.com/search?q=AlternativeTo",
+    "license": "AGPL-3.0",
+    "stars": 64400,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "product-hunt",
+    "name": "Product Hunt",
+    "description": "Daily curated list and launchpad for new software products and AI tools",
+    "url": "https://www.producthunt.com",
+    "category": "lists",
+    "tags": [
+      "ai",
+      "product",
+      "lists"
+    ],
+    "github": "https://github.com/search?q=Product%20Hunt",
+    "license": "GPL-3.0",
+    "stars": 27200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

@@ -1,7 +1,87 @@
 [
-  { "name": "Brave Browser", "url": "https://brave.com", "desc": "Privacy-focused browser blocking ads and trackers automatically" },
-  { "name": "ProtonMail", "url": "https://proton.me/mail", "desc": "Secure, encrypted email service based in Switzerland" },
-  { "name": "KeepassXC", "url": "https://keepassxc.org", "desc": "Offline, open-source password manager with robust security" },
-  { "name": "Tor Project", "url": "https://www.torproject.org", "desc": "Open-source software for enabling anonymous communication" },
-  { "name": "Bitwarden", "url": "https://bitwarden.com", "desc": "Open-source password manager with end-to-end encryption" }
+  {
+    "id": "brave-browser",
+    "name": "Brave Browser",
+    "description": "Privacy-focused browser blocking ads and trackers automatically",
+    "url": "https://brave.com",
+    "category": "privacy-security",
+    "tags": [
+      "ai",
+      "brave",
+      "privacy"
+    ],
+    "github": "https://github.com/search?q=Brave%20Browser",
+    "license": "MIT",
+    "stars": 13200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "protonmail",
+    "name": "ProtonMail",
+    "description": "Secure, encrypted email service based in Switzerland",
+    "url": "https://proton.me/mail",
+    "category": "privacy-security",
+    "tags": [
+      "ai",
+      "protonmail",
+      "privacy"
+    ],
+    "github": "https://github.com/search?q=ProtonMail",
+    "license": "MIT",
+    "stars": 4100,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "keepassxc",
+    "name": "KeepassXC",
+    "description": "Offline, open-source password manager with robust security",
+    "url": "https://keepassxc.org",
+    "category": "privacy-security",
+    "tags": [
+      "ai",
+      "keepassxc",
+      "privacy"
+    ],
+    "github": "https://github.com/search?q=KeepassXC",
+    "license": "MIT",
+    "stars": 5100,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "tor-project",
+    "name": "Tor Project",
+    "description": "Open-source software for enabling anonymous communication",
+    "url": "https://www.torproject.org",
+    "category": "privacy-security",
+    "tags": [
+      "ai",
+      "tor",
+      "privacy"
+    ],
+    "github": "https://github.com/search?q=Tor%20Project",
+    "license": "AGPL-3.0",
+    "stars": 12400,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "bitwarden",
+    "name": "Bitwarden",
+    "description": "Open-source password manager with end-to-end encryption",
+    "url": "https://bitwarden.com",
+    "category": "privacy-security",
+    "tags": [
+      "ai",
+      "bitwarden",
+      "privacy"
+    ],
+    "github": "https://github.com/search?q=Bitwarden",
+    "license": "MIT",
+    "stars": 21800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

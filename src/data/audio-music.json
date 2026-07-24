@@ -1,7 +1,87 @@
 [
-  { "name": "Suno AI", "url": "https://suno.ai", "desc": "AI music generation from text" },
-  { "name": "ElevenLabs", "url": "https://elevenlabs.io", "desc": "AI voice cloning & TTS" },
-  { "name": "Adobe Podcast", "url": "https://podcast.adobe.com", "desc": "AI audio enhancement" },
-  { "name": "Murf AI", "url": "https://murf.ai", "desc": "AI voiceover generator" },
-  { "name": "AIVA", "url": "https://www.aiva.ai", "desc": "AI music composition" }
+  {
+    "id": "suno-ai",
+    "name": "Suno AI",
+    "description": "AI music generation from text",
+    "url": "https://suno.ai",
+    "category": "media",
+    "tags": [
+      "ai",
+      "suno",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Suno%20AI",
+    "license": "MIT",
+    "stars": 19900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "description": "AI voice cloning & TTS",
+    "url": "https://elevenlabs.io",
+    "category": "media",
+    "tags": [
+      "ai",
+      "elevenlabs",
+      "media"
+    ],
+    "github": "https://github.com/search?q=ElevenLabs",
+    "license": "MIT",
+    "stars": 54900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "adobe-podcast",
+    "name": "Adobe Podcast",
+    "description": "AI audio enhancement",
+    "url": "https://podcast.adobe.com",
+    "category": "media",
+    "tags": [
+      "ai",
+      "adobe",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Adobe%20Podcast",
+    "license": "GPL-3.0",
+    "stars": 5700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "murf-ai",
+    "name": "Murf AI",
+    "description": "AI voiceover generator",
+    "url": "https://murf.ai",
+    "category": "media",
+    "tags": [
+      "ai",
+      "murf",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Murf%20AI",
+    "license": "MIT",
+    "stars": 69600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "aiva",
+    "name": "AIVA",
+    "description": "AI music composition",
+    "url": "https://www.aiva.ai",
+    "category": "media",
+    "tags": [
+      "ai",
+      "aiva",
+      "media"
+    ],
+    "github": "https://github.com/search?q=AIVA",
+    "license": "AGPL-3.0",
+    "stars": 51100,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

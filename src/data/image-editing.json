@@ -1,12 +1,172 @@
 [
-  { "name": "Adobe Photoshop (Generative Fill)", "url": "https://www.adobe.com/products/photoshop.html", "desc": "AI-powered generative fill & expand" },
-  { "name": "Midjourney", "url": "https://www.midjourney.com", "desc": "Text-to-image generation" },
-  { "name": "DALL·E 3", "url": "https://openai.com/dall-e-3", "desc": "OpenAI image generation" },
-  { "name": "Stable Diffusion", "url": "https://stability.ai", "desc": "Open-source image generation" },
-  { "name": "Clipdrop", "url": "https://clipdrop.co", "desc": "Background removal, relight, cleanup" },
-  { "name": "Runway ML", "url": "https://runwayml.com", "desc": "AI video & image editing tools" },
-  { "name": "Remini", "url": "https://remini.ai", "desc": "AI photo enhancer & restore" },
-  { "name": "Adobe Firefly", "url": "https://firefly.adobe.com", "desc": "Generative AI for creatives" },
-  { "name": "Leonardo AI", "url": "https://leonardo.ai", "desc": "AI art & asset generation" },
-  { "name": "Canva AI", "url": "https://www.canva.com", "desc": "AI design & content creation" }
+  {
+    "id": "adobe-photoshop-generative-fill",
+    "name": "Adobe Photoshop (Generative Fill)",
+    "description": "AI-powered generative fill & expand",
+    "url": "https://www.adobe.com/products/photoshop.html",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "adobe",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Adobe%20Photoshop%20(Generative%20Fill)",
+    "license": "GPL-3.0",
+    "stars": 28100,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "description": "Text-to-image generation",
+    "url": "https://www.midjourney.com",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "midjourney",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Midjourney",
+    "license": "AGPL-3.0",
+    "stars": 30800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "dall-e-3",
+    "name": "DALL·E 3",
+    "description": "OpenAI image generation",
+    "url": "https://openai.com/dall-e-3",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "dall·e",
+      "design"
+    ],
+    "github": "https://github.com/search?q=DALL%C2%B7E%203",
+    "license": "MIT",
+    "stars": 29800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "stable-diffusion",
+    "name": "Stable Diffusion",
+    "description": "Open-source image generation",
+    "url": "https://stability.ai",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "stable",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Stable%20Diffusion",
+    "license": "AGPL-3.0",
+    "stars": 65200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "clipdrop",
+    "name": "Clipdrop",
+    "description": "Background removal, relight, cleanup",
+    "url": "https://clipdrop.co",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "clipdrop",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Clipdrop",
+    "license": "GPL-3.0",
+    "stars": 61900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "runway-ml",
+    "name": "Runway ML",
+    "description": "AI video & image editing tools",
+    "url": "https://runwayml.com",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "runway",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Runway%20ML",
+    "license": "GPL-3.0",
+    "stars": 32700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "remini",
+    "name": "Remini",
+    "description": "AI photo enhancer & restore",
+    "url": "https://remini.ai",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "remini",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Remini",
+    "license": "AGPL-3.0",
+    "stars": 6600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "adobe-firefly",
+    "name": "Adobe Firefly",
+    "description": "Generative AI for creatives",
+    "url": "https://firefly.adobe.com",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "adobe",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Adobe%20Firefly",
+    "license": "MIT",
+    "stars": 51200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "leonardo-ai",
+    "name": "Leonardo AI",
+    "description": "AI art & asset generation",
+    "url": "https://leonardo.ai",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "leonardo",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Leonardo%20AI",
+    "license": "AGPL-3.0",
+    "stars": 32000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "canva-ai",
+    "name": "Canva AI",
+    "description": "AI design & content creation",
+    "url": "https://www.canva.com",
+    "category": "design-graphics",
+    "tags": [
+      "ai",
+      "canva",
+      "design"
+    ],
+    "github": "https://github.com/search?q=Canva%20AI",
+    "license": "AGPL-3.0",
+    "stars": 6300,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

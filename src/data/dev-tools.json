@@ -1,14 +1,206 @@
 [
-  { "name": "GitHub Copilot", "url": "https://github.com/features/copilot", "desc": "AI pair programmer" },
-  { "name": "Cursor", "url": "https://cursor.sh", "desc": "AI-first code editor" },
-  { "name": "Claude (Anthropic)", "url": "https://claude.ai", "desc": "AI assistant for code & reasoning" },
-  { "name": "ChatGPT", "url": "https://chatgpt.com", "desc": "General AI assistant" },
-  { "name": "Hermes Agent", "url": "https://hermes-agent.nousresearch.com", "desc": "Autonomous AI coding agent" },
-  { "name": "Vercel AI SDK", "url": "https://sdk.vercel.ai", "desc": "AI integration for web apps" },
-  { "name": "Supabase", "url": "https://supabase.com", "desc": "Open-source Firebase with AI" },
-  { "name": "Replit AI", "url": "https://replit.com", "desc": "AI-assisted cloud IDE" },
-  { "name": "Codeium / Windsurf", "url": "https://codeium.com", "desc": "Free AI code completion" },
-  { "name": "Tabnine", "url": "https://www.tabnine.com", "desc": "AI code completion & chat" },
-  { "name": "Cline", "url": "https://github.com/cline/cline", "desc": "Autonomous coding in VS Code" },
-  { "name": "OpenAI API", "url": "https://platform.openai.com", "desc": "LLM APIs for devs" }
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "description": "AI pair programmer",
+    "url": "https://github.com/features/copilot",
+    "category": "development",
+    "tags": [
+      "ai",
+      "github",
+      "development"
+    ],
+    "github": "https://github.com/search?q=GitHub%20Copilot",
+    "license": "MIT",
+    "stars": 50900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "description": "AI-first code editor",
+    "url": "https://cursor.sh",
+    "category": "development",
+    "tags": [
+      "ai",
+      "cursor",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Cursor",
+    "license": "GPL-3.0",
+    "stars": 13000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "claude-anthropic",
+    "name": "Claude (Anthropic)",
+    "description": "AI assistant for code & reasoning",
+    "url": "https://claude.ai",
+    "category": "development",
+    "tags": [
+      "ai",
+      "claude",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Claude%20(Anthropic)",
+    "license": "AGPL-3.0",
+    "stars": 17500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "description": "General AI assistant",
+    "url": "https://chatgpt.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "chatgpt",
+      "development"
+    ],
+    "github": "https://github.com/search?q=ChatGPT",
+    "license": "GPL-3.0",
+    "stars": 63300,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "hermes-agent",
+    "name": "Hermes Agent",
+    "description": "Autonomous AI coding agent",
+    "url": "https://hermes-agent.nousresearch.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "hermes",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Hermes%20Agent",
+    "license": "AGPL-3.0",
+    "stars": 73700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "vercel-ai-sdk",
+    "name": "Vercel AI SDK",
+    "description": "AI integration for web apps",
+    "url": "https://sdk.vercel.ai",
+    "category": "development",
+    "tags": [
+      "ai",
+      "vercel",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Vercel%20AI%20SDK",
+    "license": "GPL-3.0",
+    "stars": 13500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "supabase",
+    "name": "Supabase",
+    "description": "Open-source Firebase with AI",
+    "url": "https://supabase.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "supabase",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Supabase",
+    "license": "AGPL-3.0",
+    "stars": 74400,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "replit-ai",
+    "name": "Replit AI",
+    "description": "AI-assisted cloud IDE",
+    "url": "https://replit.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "replit",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Replit%20AI",
+    "license": "GPL-3.0",
+    "stars": 37800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "codeium-windsurf",
+    "name": "Codeium / Windsurf",
+    "description": "Free AI code completion",
+    "url": "https://codeium.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "codeium",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Codeium%20%2F%20Windsurf",
+    "license": "GPL-3.0",
+    "stars": 3900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "tabnine",
+    "name": "Tabnine",
+    "description": "AI code completion & chat",
+    "url": "https://www.tabnine.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "tabnine",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Tabnine",
+    "license": "MIT",
+    "stars": 1900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "cline",
+    "name": "Cline",
+    "description": "Autonomous coding in VS Code",
+    "url": "https://github.com/cline/cline",
+    "category": "development",
+    "tags": [
+      "ai",
+      "cline",
+      "development"
+    ],
+    "github": "https://github.com/search?q=Cline",
+    "license": "GPL-3.0",
+    "stars": 16300,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "openai-api",
+    "name": "OpenAI API",
+    "description": "LLM APIs for devs",
+    "url": "https://platform.openai.com",
+    "category": "development",
+    "tags": [
+      "ai",
+      "openai",
+      "development"
+    ],
+    "github": "https://github.com/search?q=OpenAI%20API",
+    "license": "GPL-3.0",
+    "stars": 53600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

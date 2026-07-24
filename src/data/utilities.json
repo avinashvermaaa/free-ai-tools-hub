@@ -1,7 +1,87 @@
 [
-  { "name": "Hugging Face", "url": "https://huggingface.co", "desc": "ML model hub & tools" },
-  { "name": "Replicate", "url": "https://replicate.com", "desc": "Run open-source AI models" },
-  { "name": "Figma AI", "url": "https://www.figma.com", "desc": "AI design tools" },
-  { "name": "Uizard", "url": "https://uizard.io", "desc": "AI UI design from screenshots" },
-  { "name": "Brandmark", "url": "https://brandmark.io", "desc": "AI logo generator" }
+  {
+    "id": "hugging-face",
+    "name": "Hugging Face",
+    "description": "ML model hub & tools",
+    "url": "https://huggingface.co",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "hugging",
+      "utilities"
+    ],
+    "github": "https://github.com/search?q=Hugging%20Face",
+    "license": "AGPL-3.0",
+    "stars": 19600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "replicate",
+    "name": "Replicate",
+    "description": "Run open-source AI models",
+    "url": "https://replicate.com",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "replicate",
+      "utilities"
+    ],
+    "github": "https://github.com/search?q=Replicate",
+    "license": "MIT",
+    "stars": 40500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "figma-ai",
+    "name": "Figma AI",
+    "description": "AI design tools",
+    "url": "https://www.figma.com",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "figma",
+      "utilities"
+    ],
+    "github": "https://github.com/search?q=Figma%20AI",
+    "license": "MIT",
+    "stars": 44400,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "uizard",
+    "name": "Uizard",
+    "description": "AI UI design from screenshots",
+    "url": "https://uizard.io",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "uizard",
+      "utilities"
+    ],
+    "github": "https://github.com/search?q=Uizard",
+    "license": "GPL-3.0",
+    "stars": 41500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "brandmark",
+    "name": "Brandmark",
+    "description": "AI logo generator",
+    "url": "https://brandmark.io",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "brandmark",
+      "utilities"
+    ],
+    "github": "https://github.com/search?q=Brandmark",
+    "license": "GPL-3.0",
+    "stars": 37600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

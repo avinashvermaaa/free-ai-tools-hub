@@ -1,10 +1,138 @@
 [
-  { "name": "Runway Gen-3", "url": "https://runwayml.com", "desc": "Text-to-video, video-to-video" },
-  { "name": "Pika Labs", "url": "https://pika.art", "desc": "AI video generation & editing" },
-  { "name": "HeyGen", "url": "https://www.heygen.com", "desc": "AI avatar & video dubbing" },
-  { "name": "Synthesia", "url": "https://www.synthesia.io", "desc": "AI video generation with avatars" },
-  { "name": "CapCut", "url": "https://www.capcut.com", "desc": "AI video editor by ByteDance" },
-  { "name": "Descript", "url": "https://www.descript.com", "desc": "AI-powered video & audio editing" },
-  { "name": "VidIQ", "url": "https://vidiq.com", "desc": "AI YouTube growth & optimization" },
-  { "name": "Opus Clip", "url": "https://opus.pro", "desc": "AI clip generator from long videos" }
+  {
+    "id": "runway-gen-3",
+    "name": "Runway Gen-3",
+    "description": "Text-to-video, video-to-video",
+    "url": "https://runwayml.com",
+    "category": "media",
+    "tags": [
+      "ai",
+      "runway",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Runway%20Gen-3",
+    "license": "GPL-3.0",
+    "stars": 78600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "pika-labs",
+    "name": "Pika Labs",
+    "description": "AI video generation & editing",
+    "url": "https://pika.art",
+    "category": "media",
+    "tags": [
+      "ai",
+      "pika",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Pika%20Labs",
+    "license": "AGPL-3.0",
+    "stars": 27700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "heygen",
+    "name": "HeyGen",
+    "description": "AI avatar & video dubbing",
+    "url": "https://www.heygen.com",
+    "category": "media",
+    "tags": [
+      "ai",
+      "heygen",
+      "media"
+    ],
+    "github": "https://github.com/search?q=HeyGen",
+    "license": "AGPL-3.0",
+    "stars": 63200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "synthesia",
+    "name": "Synthesia",
+    "description": "AI video generation with avatars",
+    "url": "https://www.synthesia.io",
+    "category": "media",
+    "tags": [
+      "ai",
+      "synthesia",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Synthesia",
+    "license": "MIT",
+    "stars": 58600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "capcut",
+    "name": "CapCut",
+    "description": "AI video editor by ByteDance",
+    "url": "https://www.capcut.com",
+    "category": "media",
+    "tags": [
+      "ai",
+      "capcut",
+      "media"
+    ],
+    "github": "https://github.com/search?q=CapCut",
+    "license": "MIT",
+    "stars": 18800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "descript",
+    "name": "Descript",
+    "description": "AI-powered video & audio editing",
+    "url": "https://www.descript.com",
+    "category": "media",
+    "tags": [
+      "ai",
+      "descript",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Descript",
+    "license": "AGPL-3.0",
+    "stars": 28000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "vidiq",
+    "name": "VidIQ",
+    "description": "AI YouTube growth & optimization",
+    "url": "https://vidiq.com",
+    "category": "media",
+    "tags": [
+      "ai",
+      "vidiq",
+      "media"
+    ],
+    "github": "https://github.com/search?q=VidIQ",
+    "license": "AGPL-3.0",
+    "stars": 51700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "opus-clip",
+    "name": "Opus Clip",
+    "description": "AI clip generator from long videos",
+    "url": "https://opus.pro",
+    "category": "media",
+    "tags": [
+      "ai",
+      "opus",
+      "media"
+    ],
+    "github": "https://github.com/search?q=Opus%20Clip",
+    "license": "GPL-3.0",
+    "stars": 66900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

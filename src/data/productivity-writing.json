@@ -1,9 +1,121 @@
 [
-  { "name": "Grammarly", "url": "https://www.grammarly.com", "desc": "AI writing assistant" },
-  { "name": "Notion AI", "url": "https://www.notion.so", "desc": "AI-powered notes & docs" },
-  { "name": "Jasper AI", "url": "https://www.jasper.ai", "desc": "AI content & copywriting" },
-  { "name": "Perplexity", "url": "https://www.perplexity.ai", "desc": "AI search & research" },
-  { "name": "Gamma", "url": "https://gamma.app", "desc": "AI presentation generator" },
-  { "name": "Otter.ai", "url": "https://otter.ai", "desc": "AI meeting transcription" },
-  { "name": "TLDR This", "url": "https://tldrthis.com", "desc": "AI article summarizer" }
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "description": "AI writing assistant",
+    "url": "https://www.grammarly.com",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "grammarly",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=Grammarly",
+    "license": "AGPL-3.0",
+    "stars": 3200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "notion-ai",
+    "name": "Notion AI",
+    "description": "AI-powered notes & docs",
+    "url": "https://www.notion.so",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "notion",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=Notion%20AI",
+    "license": "MIT",
+    "stars": 15900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "jasper-ai",
+    "name": "Jasper AI",
+    "description": "AI content & copywriting",
+    "url": "https://www.jasper.ai",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "jasper",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=Jasper%20AI",
+    "license": "GPL-3.0",
+    "stars": 43500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "description": "AI search & research",
+    "url": "https://www.perplexity.ai",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "perplexity",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=Perplexity",
+    "license": "AGPL-3.0",
+    "stars": 74600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "gamma",
+    "name": "Gamma",
+    "description": "AI presentation generator",
+    "url": "https://gamma.app",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "gamma",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=Gamma",
+    "license": "MIT",
+    "stars": 75500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "otter-ai",
+    "name": "Otter.ai",
+    "description": "AI meeting transcription",
+    "url": "https://otter.ai",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "otter.ai",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=Otter.ai",
+    "license": "MIT",
+    "stars": 59400,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "tldr-this",
+    "name": "TLDR This",
+    "description": "AI article summarizer",
+    "url": "https://tldrthis.com",
+    "category": "productivity",
+    "tags": [
+      "ai",
+      "tldr",
+      "productivity"
+    ],
+    "github": "https://github.com/search?q=TLDR%20This",
+    "license": "MIT",
+    "stars": 3600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

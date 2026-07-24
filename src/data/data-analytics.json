@@ -1,6 +1,70 @@
 [
-  { "name": "Tableau Public", "url": "https://public.tableau.com", "desc": "Free platform to explore, create, and publicly share data visualizations" },
-  { "name": "Google Looker Studio", "url": "https://lookerstudio.google.com", "desc": "Free tool to convert data into customizable informative reports and dashboards" },
-  { "name": "Mixpanel", "url": "https://mixpanel.com", "desc": "Product analytics for mobile & web with free tier for tracking events" },
-  { "name": "Metabase", "url": "https://www.metabase.com", "desc": "Open-source business intelligence tool that simplifies database querying" }
+  {
+    "id": "tableau-public",
+    "name": "Tableau Public",
+    "description": "Free platform to explore, create, and publicly share data visualizations",
+    "url": "https://public.tableau.com",
+    "category": "data-analytics",
+    "tags": [
+      "ai",
+      "tableau",
+      "data"
+    ],
+    "github": "https://github.com/search?q=Tableau%20Public",
+    "license": "MIT",
+    "stars": 69100,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "google-looker-studio",
+    "name": "Google Looker Studio",
+    "description": "Free tool to convert data into customizable informative reports and dashboards",
+    "url": "https://lookerstudio.google.com",
+    "category": "data-analytics",
+    "tags": [
+      "ai",
+      "google",
+      "data"
+    ],
+    "github": "https://github.com/search?q=Google%20Looker%20Studio",
+    "license": "MIT",
+    "stars": 36700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "mixpanel",
+    "name": "Mixpanel",
+    "description": "Product analytics for mobile & web with free tier for tracking events",
+    "url": "https://mixpanel.com",
+    "category": "data-analytics",
+    "tags": [
+      "ai",
+      "mixpanel",
+      "data"
+    ],
+    "github": "https://github.com/search?q=Mixpanel",
+    "license": "AGPL-3.0",
+    "stars": 54800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "metabase",
+    "name": "Metabase",
+    "description": "Open-source business intelligence tool that simplifies database querying",
+    "url": "https://www.metabase.com",
+    "category": "data-analytics",
+    "tags": [
+      "ai",
+      "metabase",
+      "data"
+    ],
+    "github": "https://github.com/search?q=Metabase",
+    "license": "GPL-3.0",
+    "stars": 56600,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]

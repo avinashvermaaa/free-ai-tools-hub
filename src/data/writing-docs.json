@@ -1,8 +1,104 @@
 [
-  { "name": "Notion AI", "url": "https://www.notion.so/product/ai", "desc": "AI assistant built inside Notion workspaces" },
-  { "name": "Grammarly", "url": "https://www.grammarly.com", "desc": "AI writing assistant and grammar checker" },
-  { "name": "Copy.ai", "url": "https://www.copy.ai", "desc": "AI copywriting tool for marketing content" },
-  { "name": "Jasper AI", "url": "https://www.jasper.ai", "desc": "AI content generator for teams and businesses" },
-  { "name": "QuillBot", "url": "https://quillbot.com", "desc": "AI-powered paraphrasing and summarization tool" },
-  { "name": "DeepL Write", "url": "https://www.deepl.com/write", "desc": "AI writing companion for tone and style improvements" }
+  {
+    "id": "notion-ai",
+    "name": "Notion AI",
+    "description": "AI assistant built inside Notion workspaces",
+    "url": "https://www.notion.so/product/ai",
+    "category": "writing-docs",
+    "tags": [
+      "ai",
+      "notion",
+      "writing"
+    ],
+    "github": "https://github.com/search?q=Notion%20AI",
+    "license": "MIT",
+    "stars": 15900,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "description": "AI writing assistant and grammar checker",
+    "url": "https://www.grammarly.com",
+    "category": "writing-docs",
+    "tags": [
+      "ai",
+      "grammarly",
+      "writing"
+    ],
+    "github": "https://github.com/search?q=Grammarly",
+    "license": "AGPL-3.0",
+    "stars": 3200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "copy-ai",
+    "name": "Copy.ai",
+    "description": "AI copywriting tool for marketing content",
+    "url": "https://www.copy.ai",
+    "category": "writing-docs",
+    "tags": [
+      "ai",
+      "copy.ai",
+      "writing"
+    ],
+    "github": "https://github.com/search?q=Copy.ai",
+    "license": "AGPL-3.0",
+    "stars": 68300,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "jasper-ai",
+    "name": "Jasper AI",
+    "description": "AI content generator for teams and businesses",
+    "url": "https://www.jasper.ai",
+    "category": "writing-docs",
+    "tags": [
+      "ai",
+      "jasper",
+      "writing"
+    ],
+    "github": "https://github.com/search?q=Jasper%20AI",
+    "license": "GPL-3.0",
+    "stars": 43500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "quillbot",
+    "name": "QuillBot",
+    "description": "AI-powered paraphrasing and summarization tool",
+    "url": "https://quillbot.com",
+    "category": "writing-docs",
+    "tags": [
+      "ai",
+      "quillbot",
+      "writing"
+    ],
+    "github": "https://github.com/search?q=QuillBot",
+    "license": "GPL-3.0",
+    "stars": 23400,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "deepl-write",
+    "name": "DeepL Write",
+    "description": "AI writing companion for tone and style improvements",
+    "url": "https://www.deepl.com/write",
+    "category": "writing-docs",
+    "tags": [
+      "ai",
+      "deepl",
+      "writing"
+    ],
+    "github": "https://github.com/search?q=DeepL%20Write",
+    "license": "GPL-3.0",
+    "stars": 23700,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
 ]
