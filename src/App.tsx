@@ -1,17 +1,11 @@
 import { useState } from "react";
-import toolsDataRaw from "./data/index.js";
-import featuredDataRaw from "./data/featured.json";
-import ToolCard, { Tool } from "./ToolCard";
-import "./App.css";
-
-interface Category {
-  title: string;
-  icon: string;
-  slug: string;
-  tools: Tool[];
-  filteredTools?: Tool[];
-  matchesCategory?: boolean;
-}
+import toolsDataRaw from "./constants/index";
+import featuredDataRaw from "./constants/featured.json";
+import ToolCard from "./components/ToolCard";
+import Footer from "./components/Footer";
+import { Tool, Category } from "./types";
+import { useTools } from "./hooks/useTools";
+import "./styles/App.css";
 
 // Assert types
 const toolsData = toolsDataRaw as Category[];
@@ -21,67 +15,47 @@ const featuredData = featuredDataRaw as Tool[];
 const totalTools = toolsData.reduce((sum, cat) => sum + cat.tools.length, 0);
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-  // Filter categories and their tools based on active category selection and search query
-  const filteredCategories = toolsData
-    .map((cat): Category => {
-      const matchesCategory = !activeCategory || cat.slug === activeCategory;
-      const filtered = cat.tools.filter((tool) => {
-        if (!searchQuery) return true;
-        const q = searchQuery.toLowerCase();
-        return (
-          tool.name.toLowerCase().includes(q) ||
-          (tool.description || tool.desc || "").toLowerCase().includes(q)
-        );
-      });
-      return { ...cat, filteredTools: filtered, matchesCategory };
-    })
-    .filter((cat) => (cat.filteredTools?.length ?? 0) > 0 && cat.matchesCategory);
-
-  // Calculate current showing tools count
-  const showingCount = filteredCategories.reduce(
-    (sum, cat) => sum + (cat.filteredTools?.length ?? 0),
-    0
-  );
-
-  // Filter featured tools based on search query
-  const filteredFeatured = featuredData.filter((tool) => {
-    if (!searchQuery) return true;
-    const q = searchQuery.toLowerCase();
-    return (
-      tool.name.toLowerCase().includes(q) ||
-      (tool.description || tool.desc || "").toLowerCase().includes(q) ||
-      (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(q)))
-    );
-  });
+  const [showAll, setShowAll] = useState(false);
+  const {
+    searchQuery,
+    setSearchQuery,
+    activeCategory,
+    setActiveCategory,
+    filteredCategories,
+    showingCount,
+    filteredFeatured
+  } = useTools(toolsData, featuredData);
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] pb-12 w-full flex flex-col items-center">
-      {/* Top Header & Search Area - Full Width Responsive Layout */}
-      <header className="w-full max-w-[1600px] pt-12 pb-6 px-4 md:px-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#e6edf3] mb-3">
-          🧠 Free AI Tools Hub
+    <div className="min-h-screen pb-0 w-full flex flex-col items-center justify-between">
+      {/* Top Header & Search Area */}
+      <header className="w-full max-w-[1600px] pt-16 pb-8 px-4 md:px-12 text-center relative">
+        {/* Glow ambient background effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-yellow-500/[0.02] blur-[120px] rounded-full pointer-events-none -z-10" />
+
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+          <span className="text-[var(--accent)] font-black">Free-AI-Tools-Hub ✦</span>
         </h1>
-        <p className="text-[var(--text-muted)] max-w-2xl mx-auto text-sm md:text-base mb-8">
-          A curated directory of premium AI utilities and services for creators, developers, and writers.
+        <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mb-10 leading-relaxed">
+          Discover a hand-picked, curated collection of free and open-source artificial intelligence tools to supercharge your workflow.
         </p>
 
-        {/* Search Bar Container - Responsive Full Width */}
-        <div className="w-full mb-6">
-          <div className="flex items-center gap-3 px-4 py-3.5 bg-[#12131a] border border-[#262930] rounded-xl focus-within:border-[#ff0055] focus-within:shadow-[0_0_0_1px_#ff0055] transition-all">
-            <span className="text-[#ff0055] font-extrabold text-base select-none">&gt;</span>
+        {/* Search Bar Container */}
+        <div className="w-full mb-8">
+          <div className="flex items-center gap-3 px-4.5 py-3.5 bg-white/[0.01] border border-white/[0.06] rounded-2xl focus-within:border-[#facc15]/30 focus-within:bg-white/[0.02] focus-within:shadow-[0_0_30px_rgba(250,204,21,0.1)] transition-all duration-300">
+            <svg className="w-5 h-5 text-[#facc15] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
             <input
               type="text"
-              className="w-full bg-transparent text-[#e6edf3] placeholder:text-[#8b949e]/50 outline-none text-sm font-medium"
+              className="w-full bg-transparent text-slate-100 placeholder:text-slate-500 outline-none text-sm font-medium"
               placeholder="Search tools by name, tag, or description..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             {searchQuery && (
               <button
-                className="text-[#8b949e] hover:text-[#e6edf3] text-xs px-2 py-0.5 rounded bg-[#262930] transition-colors"
+                className="text-slate-400 hover:text-white text-xs px-2 py-1 rounded-md bg-white/[0.06] hover:bg-white/[0.1] transition-colors"
                 onClick={() => setSearchQuery("")}
               >
                 ✕
@@ -90,17 +64,25 @@ function App() {
           </div>
         </div>
 
-        {/* Category Chips - Wrapping with ◈All Prefix */}
-        <div className="flex flex-wrap justify-start gap-2.5 mb-8">
+        {/* Category Chips */}
+        <div className="flex flex-wrap justify-start gap-2 mb-10 w-full">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
+            className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
               activeCategory === null
-                ? "bg-[#ff0055] text-white border-[#ff0055]"
-                : "bg-[#12131a] text-[#8b949e] border-[#262930] hover:border-[#ff0055]/50 hover:text-[#e6edf3]"
+                ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-yellow-500/10"
+                : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[#facc15] hover:text-black"
             }`}
           >
-            <span className="text-sm">◈</span>All {totalTools}
+            <span className="text-sm shrink-0">◈</span>
+            <span className={`w-[1px] h-3 shrink-0 transition-colors ${activeCategory === null ? 'bg-black/20' : 'bg-white/15 group-hover:bg-black/20'}`} />
+            <span className="font-semibold">All</span>
+            <span className={`w-[1px] h-3 shrink-0 transition-colors ${activeCategory === null ? 'bg-black/20' : 'bg-white/15 group-hover:bg-black/20'}`} />
+            <span className={`font-mono text-[10px] transition-colors ${
+              activeCategory === null ? 'text-black font-extrabold' : 'text-slate-300 group-hover:text-black group-hover:font-extrabold'
+            }`}>
+              {totalTools}
+            </span>
           </button>
           {toolsData.map((cat) => (
             <button
@@ -108,39 +90,44 @@ function App() {
               onClick={() =>
                 setActiveCategory(activeCategory === cat.slug ? null : cat.slug)
               }
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
+              className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
                 activeCategory === cat.slug
-                  ? "bg-[#ff0055] text-white border-[#ff0055]"
-                  : "bg-[#12131a] text-[#8b949e] border-[#262930] hover:border-[#ff0055]/50 hover:text-[#e6edf3]"
+                  ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-yellow-500/10"
+                  : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[#facc15] hover:text-black"
               }`}
             >
               <span className="text-sm shrink-0">{cat.icon}</span>
-              <span>
-                {cat.title} {cat.tools.length}
+              <span className={`w-[1px] h-3 shrink-0 transition-colors ${activeCategory === cat.slug ? 'bg-black/20' : 'bg-white/15 group-hover:bg-black/20'}`} />
+              <span className="font-semibold">{cat.title}</span>
+              <span className={`w-[1px] h-3 shrink-0 transition-colors ${activeCategory === cat.slug ? 'bg-black/20' : 'bg-white/15 group-hover:bg-black/20'}`} />
+              <span className={`font-mono text-[10px] transition-colors ${
+                activeCategory === cat.slug ? 'text-black font-extrabold' : 'text-slate-300 group-hover:text-black group-hover:font-extrabold'
+              }`}>
+                {cat.tools.length}
               </span>
             </button>
           ))}
         </div>
 
         {/* Showing statistics row */}
-        <div className="text-[10px] tracking-widest text-[#8b949e] font-mono font-extrabold text-left uppercase">
-          SHOWING {showingCount} OF {totalTools} TOOLS
+        <div className="text-md tracking-widest text-slate-500 font-mono font-bold text-center uppercase">
+          ✦ SHOWING {showingCount} OF {totalTools} TOOLS ✦
         </div>
       </header>
 
-      {/* Main Content Area - Full Screen Responsive Width */}
+      {/* Main Content Area */}
       <main className="w-full max-w-[1600px] px-4 md:px-12">
         {/* Featured Section */}
         {filteredFeatured.length > 0 && !activeCategory && (
-          <div className="mb-14">
+          <div className="mb-16">
             <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-[1px] bg-[#262930] grow"></div>
-              <span className="text-[10px] tracking-widest text-[#8b949e] font-mono font-extrabold uppercase">
-                FEATURED
+              <div className="h-[1px] bg-gradient-to-r from-transparent to-white/[0.08] grow"></div>
+              <span className="text-[10px] tracking-widest text-[#facc15] font-mono font-bold uppercase">
+                ⚡ FEATURED PICKS ⚡
               </span>
-              <div className="h-[1px] bg-[#262930] grow"></div>
+              <div className="h-[1px] bg-gradient-to-l from-transparent to-white/[0.08] grow"></div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {filteredFeatured.map((tool, i) => (
                 <ToolCard key={i} tool={tool} />
               ))}
@@ -149,44 +136,53 @@ function App() {
         )}
 
         {/* Category lists */}
-        {filteredCategories.length === 0 ? (
-          <div className="text-center py-24 bg-[#12131a] border border-[#262930] rounded-2xl w-full">
-            <div className="text-4xl mb-3">🔍</div>
-            <p className="text-[#8b949e] text-base font-medium">
-              No tools found matching your search query.
-            </p>
-          </div>
+        {showAll || searchQuery || activeCategory ? (
+          filteredCategories.length === 0 ? (
+            <div className="text-center py-20 bg-white/[0.01] border border-white/[0.05] rounded-3xl w-full max-w-lg mx-auto">
+              <div className="text-4xl mb-4">🔍</div>
+              <p className="text-slate-400 text-sm font-semibold">
+                No tools found matching your search.
+              </p>
+            </div>
+          ) : (
+            filteredCategories.map((cat) => (
+              <section key={cat.slug} className="mb-16 w-full">
+                <div className="flex items-center gap-2.5 mb-8 pb-3 border-b border-white/[0.03]">
+                  <span className="text-2xl">{cat.icon}</span>
+                  <h2 className="text-xl font-bold text-[var(--category-title)]">
+                    {cat.title}
+                  </h2>
+                  <span className="text-[11px] text-slate-400 bg-white/[0.03] border border-white/[0.06] rounded-md px-2 py-0.5 font-mono font-bold">
+                    {cat.filteredTools?.length ?? 0}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {cat.filteredTools?.map((tool, i) => (
+                    <ToolCard
+                      key={i}
+                      tool={tool}
+                      categoryName={cat.title}
+                      categoryIcon={cat.icon}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))
+          )
         ) : (
-          filteredCategories.map((cat) => (
-            <section key={cat.slug} className="mb-14 w-full">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-2xl">{cat.icon}</span>
-                <h2 className="text-xl font-extrabold text-[#e6edf3]">
-                  {cat.title}
-                </h2>
-                <span className="text-xs text-[#8b949e] bg-[#12131a] border border-[#262930] rounded-md px-2.5 py-0.5 font-mono font-bold">
-                  {cat.filteredTools?.length ?? 0}
-                </span>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {cat.filteredTools?.map((tool, i) => (
-                  <ToolCard
-                    key={i}
-                    tool={tool}
-                    categoryName={cat.title}
-                    categoryIcon={cat.icon}
-                  />
-                ))}
-              </div>
-            </section>
-          ))
+          <div className="text-center mt-12 mb-6">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold border border-white/[0.05] bg-white/[0.02] text-slate-300 hover:border-transparent hover:bg-[#facc15] hover:text-black hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300 cursor-pointer"
+            >
+              Show More Tools
+              <span>↓</span>
+            </button>
+          </div>
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="w-full max-w-[1600px] border-t border-[#262930] mt-20 pt-8 px-4 md:px-12 text-center text-xs text-[#8b949e] font-mono">
-        Built with Vite ⚡ + React ⚛️ + Tailwind CSS 🎨 &nbsp;|&nbsp; Free AI Tools Hub ✨
-      </footer>
+      <Footer />
     </div>
   );
 }
