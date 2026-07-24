@@ -8,14 +8,22 @@
   --border-hover: rgba(255, 255, 255, 0.12);
   --text: #f1f5f9;
   --text-muted: #94a3b8;
+  
+  /* Default Yellow Theme variables */
   --accent: #facc15;
+  --card-shadow-hover: rgba(250, 204, 21, 0.08);
+  --card-tag-bg-hover: rgba(250, 204, 21, 0.08);
+  --card-tag-border-hover: rgba(250, 204, 21, 0.25);
+  --card-github-bg-hover: rgba(250, 204, 21, 0.08);
+  --card-github-border-hover: rgba(250, 204, 21, 0.25);
+  --radial-glow-1: rgba(250, 204, 21, 0.04);
+  --radial-glow-2: rgba(250, 204, 21, 0.01);
 
   /* Centralized Theme Configurations */
   --card-bg: rgba(255, 255, 255, 0.01);
   --card-bg-hover: rgba(255, 255, 255, 0.03);
   --card-border: rgba(255, 255, 255, 0.05);
   --card-border-hover: rgba(255, 255, 255, 0.12);
-  --card-shadow-hover: rgba(250, 204, 21, 0.08);
 
   --card-title: #f1f5f9;
   --card-title-hover: var(--accent);
@@ -24,16 +32,48 @@
   --card-tag-bg: rgba(255, 255, 255, 0.03);
   --card-tag-border: rgba(255, 255, 255, 0.05);
   --card-tag-text: #94a3b8;
-  --card-tag-bg-hover: rgba(250, 204, 21, 0.08);
-  --card-tag-border-hover: rgba(250, 204, 21, 0.25);
   --card-tag-text-hover: var(--accent);
 
   --card-github-border: rgba(255, 255, 255, 0.05);
-  --card-github-bg-hover: rgba(250, 204, 21, 0.08);
-  --card-github-border-hover: rgba(250, 204, 21, 0.25);
   --card-github-text-hover: var(--accent);
 
   --category-title: var(--accent);
+}
+
+/* Purple Theme override */
+html[data-theme="purple"] {
+  --accent: #a78bfa;
+  --card-shadow-hover: rgba(167, 139, 250, 0.1);
+  --card-tag-bg-hover: rgba(167, 139, 250, 0.08);
+  --card-tag-border-hover: rgba(167, 139, 250, 0.25);
+  --card-github-bg-hover: rgba(167, 139, 250, 0.08);
+  --card-github-border-hover: rgba(167, 139, 250, 0.25);
+  --radial-glow-1: rgba(167, 139, 250, 0.06);
+  --radial-glow-2: rgba(167, 139, 250, 0.02);
+}
+
+/* Green Theme override */
+html[data-theme="green"] {
+  --accent: #34d399;
+  --card-shadow-hover: rgba(52, 211, 153, 0.1);
+  --card-tag-bg-hover: rgba(52, 211, 153, 0.08);
+  --card-tag-border-hover: rgba(52, 211, 153, 0.25);
+  --card-github-bg-hover: rgba(52, 211, 153, 0.08);
+  --card-github-border-hover: rgba(52, 211, 153, 0.25);
+  --radial-glow-1: rgba(52, 211, 153, 0.06);
+  --radial-glow-2: rgba(52, 211, 153, 0.02);
+}
+
+/* Pink Theme override */
+html[data-theme="pink"] {
+  --accent: #f472b6;
+  --card-shadow-hover: rgba(244, 114, 182, 0.1);
+  --card-tag-bg-hover: rgba(244, 114, 182, 0.08);
+  --card-tag-border-hover: rgba(244, 114, 182, 0.25);
+  --card-github-bg-hover: rgba(244, 114, 182, 0.08);
+  --card-github-border-hover: rgba(244, 114, 182, 0.25);
+  --radial-glow-1: rgba(244, 114, 182, 0.06);
+  --radial-glow-2: rgba(244, 114, 182, 0.02);
 }
 
 body {
@@ -55,9 +95,9 @@ body::before {
   bottom: 0;
   z-index: -10;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 90% 20%, rgba(250, 204, 21, 0.01) 0%, transparent 40%),
-    radial-gradient(circle at 10% 80%, rgba(250, 204, 21, 0.01) 0%, transparent 45%);
+    radial-gradient(circle at 50% 0%, var(--radial-glow-1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, var(--radial-glow-2) 0%, transparent 40%),
+    radial-gradient(circle at 10% 80%, var(--radial-glow-2) 0%, transparent 45%);
   pointer-events: none;
 }
 
@@ -88,5 +128,20 @@ body::before {
 
 .glass-panel:hover {
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up-in {
+  animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 

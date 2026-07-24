@@ -3,6 +3,10 @@ import toolsDataRaw from "./constants/index";
 import featuredDataRaw from "./constants/featured.json";
 import ToolCard from "./components/ToolCard";
 import Footer from "./components/Footer";
+import ThemeSelector from "./components/ThemeSelector";
+import BackToTop from "./components/BackToTop";
+import SurpriseModal from "./components/SurpriseModal";
+import SubmitDrawer from "./components/SubmitDrawer";
 import { Tool, Category } from "./types";
 import { useTools } from "./hooks/useTools";
 import "./styles/App.css";
@@ -16,6 +20,11 @@ const totalTools = toolsData.reduce((sum, cat) => sum + cat.tools.length, 0);
 
 function App() {
   const [showAll, setShowAll] = useState(false);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [isSubmitOpen, setIsSubmitOpen] = useState(false);
+  const [isSurpriseOpen, setIsSurpriseOpen] = useState(false);
+  const [surpriseTool, setSurpriseTool] = useState<Tool | null>(null);
+
   const {
     searchQuery,
     setSearchQuery,
@@ -26,12 +35,38 @@ function App() {
     filteredFeatured
   } = useTools(toolsData, featuredData);
 
+  const handleSurprise = () => {
+    const allTools = toolsData.flatMap((cat) => cat.tools);
+    if (allTools.length === 0) return;
+    const randomTool = allTools[Math.floor(Math.random() * allTools.length)];
+    setSurpriseTool(randomTool);
+    setIsSurpriseOpen(true);
+  };
+
   return (
     <div className="min-h-screen pb-0 w-full flex flex-col items-center justify-between">
       {/* Top Header & Search Area */}
-      <header className="w-full max-w-[1600px] pt-16 pb-8 px-4 md:px-12 text-center relative">
+      <header className="w-full max-w-[1600px] pt-24 pb-8 px-4 md:px-12 text-center relative">
         {/* Glow ambient background effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-yellow-500/[0.02] blur-[120px] rounded-full pointer-events-none -z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-[var(--accent)]/[0.02] blur-[120px] rounded-full pointer-events-none -z-10" />
+
+        {/* Top Controls Row */}
+        <div className="absolute top-6 right-4 md:right-12 flex flex-wrap items-center justify-end gap-3 z-20">
+          <button
+            onClick={handleSurprise}
+            className="px-3 py-1.5 rounded-full bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.05] text-[11px] font-bold text-slate-300 hover:text-[var(--accent)] hover:border-[var(--accent)]/30 backdrop-blur-md transition-all cursor-pointer"
+            title="Pick a random tool"
+          >
+            🎲 Surprise Me
+          </button>
+          <button
+            onClick={() => setIsSubmitOpen(true)}
+            className="px-3 py-1.5 rounded-full bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.05] text-[11px] font-bold text-slate-300 hover:text-[var(--accent)] hover:border-[var(--accent)]/30 backdrop-blur-md transition-all cursor-pointer"
+          >
+            ➕ Submit Tool
+          </button>
+          <ThemeSelector />
+        </div>
 
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
           <span className="text-[var(--accent)] font-black">Free-AI-Tools-Hub ✦</span>
@@ -42,8 +77,8 @@ function App() {
 
         {/* Search Bar Container */}
         <div className="w-full mb-8">
-          <div className="flex items-center gap-3 px-4.5 py-3.5 bg-white/[0.01] border border-white/[0.06] rounded-2xl focus-within:border-[#facc15]/30 focus-within:bg-white/[0.02] focus-within:shadow-[0_0_30px_rgba(250,204,21,0.1)] transition-all duration-300">
-            <svg className="w-5 h-5 text-[#facc15] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="flex items-center gap-3 px-4.5 py-3.5 bg-white/[0.01] border border-white/[0.06] rounded-2xl focus-within:border-[var(--accent)]/30 focus-within:bg-white/[0.02] focus-within:shadow-[0_0_30px_var(--card-shadow-hover)] transition-all duration-300">
+            <svg className="w-5 h-5 text-[var(--accent)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
@@ -61,6 +96,27 @@ function App() {
                 ✕
               </button>
             )}
+            <div className="w-[1px] h-5 bg-white/10 shrink-0 mx-1" />
+            <div className="flex items-center gap-1 shrink-0">
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`p-1.5 rounded-lg cursor-pointer transition-colors ${viewMode === "grid" ? "text-[var(--accent)] bg-white/[0.04]" : "text-slate-400 hover:text-white"}`}
+                title="Grid View"
+              >
+                <svg className="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setViewMode("list")}
+                className={`p-1.5 rounded-lg cursor-pointer transition-colors ${viewMode === "list" ? "text-[var(--accent)] bg-white/[0.04]" : "text-slate-400 hover:text-white"}`}
+                title="List View"
+              >
+                <svg className="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -70,8 +126,8 @@ function App() {
             onClick={() => setActiveCategory(null)}
             className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
               activeCategory === null
-                ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-yellow-500/10"
-                : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[#facc15] hover:text-black"
+                ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-[var(--accent)]/10"
+                : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[var(--accent)] hover:text-black"
             }`}
           >
             <span className="text-sm shrink-0">◈</span>
@@ -92,8 +148,8 @@ function App() {
               }
               className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
                 activeCategory === cat.slug
-                  ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-yellow-500/10"
-                  : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[#facc15] hover:text-black"
+                  ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-[var(--accent)]/10"
+                  : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[var(--accent)] hover:text-black"
               }`}
             >
               <span className="text-sm shrink-0">{cat.icon}</span>
@@ -122,14 +178,14 @@ function App() {
           <div className="mb-16">
             <div className="flex items-center justify-center gap-4 mb-8">
               <div className="h-[1px] bg-gradient-to-r from-transparent to-white/[0.08] grow"></div>
-              <span className="text-[10px] tracking-widest text-[#facc15] font-mono font-bold uppercase">
+              <span className="text-[10px] tracking-widest text-[var(--accent)] font-mono font-bold uppercase">
                 ⚡ FEATURED PICKS ⚡
               </span>
               <div className="h-[1px] bg-gradient-to-l from-transparent to-white/[0.08] grow"></div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-3 gap-6" : "grid grid-cols-1 gap-3.5"}>
               {filteredFeatured.map((tool, i) => (
-                <ToolCard key={i} tool={tool} />
+                <ToolCard key={i} tool={tool} viewMode={viewMode} index={i} />
               ))}
             </div>
           </div>
@@ -156,13 +212,15 @@ function App() {
                     {cat.filteredTools?.length ?? 0}
                   </span>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "grid grid-cols-1 gap-3.5"}>
                   {cat.filteredTools?.map((tool, i) => (
                     <ToolCard
                       key={i}
                       tool={tool}
                       categoryName={cat.title}
                       categoryIcon={cat.icon}
+                      viewMode={viewMode}
+                      index={i}
                     />
                   ))}
                 </div>
@@ -173,7 +231,7 @@ function App() {
           <div className="text-center mt-12 mb-6">
             <button
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold border border-white/[0.05] bg-white/[0.02] text-slate-300 hover:border-transparent hover:bg-[#facc15] hover:text-black hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold border border-white/[0.05] bg-white/[0.02] text-slate-300 hover:border-transparent hover:bg-[var(--accent)] hover:text-black hover:shadow-lg hover:shadow-[var(--accent)]/10 transition-all duration-300 cursor-pointer"
             >
               Show More Tools
               <span>↓</span>
@@ -183,6 +241,19 @@ function App() {
       </main>
 
       <Footer />
+
+      {/* Floating features & Modals */}
+      <BackToTop />
+      <SurpriseModal 
+        isOpen={isSurpriseOpen} 
+        tool={surpriseTool} 
+        onClose={() => setIsSurpriseOpen(false)} 
+        onShuffle={handleSurprise} 
+      />
+      <SubmitDrawer 
+        isOpen={isSubmitOpen} 
+        onClose={() => setIsSubmitOpen(false)} 
+      />
     </div>
   );
 }

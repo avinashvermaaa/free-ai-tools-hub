@@ -6,9 +6,11 @@ interface ToolCardProps {
   tool: Tool;
   categoryName?: string;
   categoryIcon?: string;
+  viewMode?: "grid" | "list";
+  index?: number;
 }
 
-export default function ToolCard({ tool, categoryName, categoryIcon }: ToolCardProps) {
+export default function ToolCard({ tool, categoryName, categoryIcon, viewMode = "grid", index }: ToolCardProps) {
   const hashId = getStableId(tool.name);
 
   // Fallback for tags
@@ -40,10 +42,79 @@ export default function ToolCard({ tool, categoryName, categoryIcon }: ToolCardP
     window.open(tool.url, "_blank", "noopener,noreferrer");
   };
 
+  const animationDelay = index !== undefined ? `${index * 0.04}s` : "0s";
+  const desc = tool.description || tool.desc || "";
+
+  if (viewMode === "list") {
+    return (
+      <div
+        onClick={handleCardClick}
+        style={{ animationDelay }}
+        className="fade-up-in group relative bg-[var(--card-bg)] hover:bg-[var(--card-bg-hover)] border border-[var(--card-border)] hover:border-[var(--card-border-hover)] rounded-xl px-6 py-3.5 transition-all duration-300 hover:shadow-[0_10px_20px_-10px_var(--card-shadow-hover)] flex items-center justify-between gap-4 cursor-pointer overflow-hidden"
+      >
+        {/* Left: Icon, Name and Description */}
+        <div className="flex items-center gap-3.5 min-w-0 flex-1">
+          <div className="w-10 h-10 rounded-lg bg-white/[0.02] border border-white/[0.08] flex items-center justify-center text-xl shadow-inner shrink-0 group-hover:border-[var(--card-title-hover)]/20 group-hover:bg-[var(--card-title-hover)]/[0.02] transition-colors duration-300">
+            {displayIcon}
+          </div>
+          <div className="min-w-0 flex-1 md:flex md:items-center md:gap-6">
+            <h3 className="font-bold text-sm md:text-base text-[var(--card-title)] transition-colors duration-200 flex items-center gap-1.5 shrink-0">
+              <span className="truncate group-hover:text-[var(--card-title-hover)]">
+                {tool.name}
+              </span>
+              <span className="text-xs opacity-40 group-hover:opacity-100 group-hover:text-[var(--card-title-hover)] transition-all duration-200 transform translate-x-[-2px] group-hover:translate-x-0">
+                ↗
+              </span>
+            </h3>
+            <p className="text-xs text-[var(--card-text)] line-clamp-1 leading-relaxed hidden md:block">
+              {desc}
+            </p>
+          </div>
+        </div>
+
+        {/* Right: Meta Info & Actions */}
+        <div className="flex items-center gap-5 text-xs shrink-0">
+          {/* Tags */}
+          <div className="flex gap-1.5 hidden lg:flex">
+            {tags.slice(0, 2).map((tag, i) => (
+              <span
+                key={i}
+                className="tag-item text-[10px] font-medium text-[var(--card-tag-text)] bg-[var(--card-tag-bg)] border border-[var(--card-tag-border)] px-2 py-0.5 rounded hover:bg-[var(--card-tag-bg-hover)] hover:border-[var(--card-tag-border-hover)] hover:text-[var(--accent)] transition-all duration-200"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Stars & License */}
+          <div className="flex items-center gap-4 text-[var(--card-text)] font-medium">
+            <div className="flex items-center gap-1">
+              <span className="text-amber-500 text-sm">★</span>
+              <span className="font-bold text-slate-200">{starsCount}</span>
+            </div>
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="license-link flex items-center gap-1.5 font-mono text-[9px] border border-[var(--card-github-border)] hover:border-[var(--card-github-border-hover)] hover:bg-[var(--card-github-bg-hover)] px-2 py-0.5 rounded transition-all duration-200 hover:text-[var(--accent)]"
+            >
+              <span>{licenseType}</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Decorative Accent Bottom Border Line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--accent)] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      </div>
+    );
+  }
+
   return (
     <div
       onClick={handleCardClick}
-      className="group relative bg-[var(--card-bg)] hover:bg-[var(--card-bg-hover)] border border-[var(--card-border)] hover:border-[var(--card-border-hover)] rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_var(--card-shadow-hover)] flex flex-col justify-between h-full cursor-pointer overflow-hidden"
+      style={{ animationDelay }}
+      className="fade-up-in group relative bg-[var(--card-bg)] hover:bg-[var(--card-bg-hover)] border border-[var(--card-border)] hover:border-[var(--card-border-hover)] rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_var(--card-shadow-hover)] flex flex-col justify-between h-full cursor-pointer overflow-hidden"
     >
       <div>
         {/* Top Header Row */}
@@ -64,7 +135,7 @@ export default function ToolCard({ tool, categoryName, categoryIcon }: ToolCardP
             </div>
           </div>
           {tool.featured && (
-            <span className="bg-[var(--accent)] text-black text-[9px] font-extrabold px-2.5 py-0.5 rounded-full tracking-wider uppercase shrink-0 shadow-sm shadow-yellow-500/10">
+            <span className="bg-[var(--accent)] text-black text-[9px] font-extrabold px-2.5 py-0.5 rounded-full tracking-wider uppercase shrink-0 shadow-sm shadow-[var(--accent)]/10">
               FEATURED
             </span>
           )}
@@ -72,7 +143,7 @@ export default function ToolCard({ tool, categoryName, categoryIcon }: ToolCardP
 
         {/* Description */}
         <p className="text-sm text-[var(--card-text)] mb-5 line-clamp-2 leading-relaxed">
-          {tool.description || tool.desc}
+          {desc}
         </p>
 
         {/* Tags */}
