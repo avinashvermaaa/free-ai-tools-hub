@@ -2,7 +2,7 @@ import React from "react";
 import { Tool } from "../types";
 import { getStableId } from "../utils/helpers";
 import HighlightText from "./HighlightText";
-import { triggerToast } from "./Toast";
+import { triggerToast } from "../utils/eventBus";
 
 interface ToolCardProps {
   tool: Tool;
@@ -107,20 +107,20 @@ export default function ToolCard({
           <div className="flex items-center gap-1.5">
             <button
               onClick={handleBookmarkToggle}
-              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer"
+              className="action-btn p-2 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer"
               title={isBookmarked ? "Remove Bookmark" : "Add Bookmark"}
             >
-              <svg className={`w-3.5 h-3.5 ${isBookmarked ? "fill-[var(--accent)] text-[var(--accent)]" : "fill-none text-slate-400"}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className={`w-4 h-4 ${isBookmarked ? "fill-[var(--accent)] text-[var(--accent)]" : "fill-none text-slate-400"}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </button>
             <button
               onClick={handleCopyLink}
-              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer text-slate-400"
+              className="action-btn p-2 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer text-slate-400"
               title="Copy Link"
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 10.742l-1.51 1.51a3 3 0 004.243 4.243l1.51-1.51m2.636-2.636l1.51-1.51a3 3 0 00-4.243-4.243l-1.51 1.51M9 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
               </svg>
             </button>
           </div>
@@ -188,20 +188,20 @@ export default function ToolCard({
           <div className="flex items-center gap-1.5 shrink-0 ml-2">
             <button
               onClick={handleBookmarkToggle}
-              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer"
+              className="action-btn p-2 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer"
               title={isBookmarked ? "Remove Bookmark" : "Add Bookmark"}
             >
-              <svg className={`w-3.5 h-3.5 ${isBookmarked ? "fill-[var(--accent)] text-[var(--accent)]" : "fill-none text-slate-400"}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className={`w-4 h-4 ${isBookmarked ? "fill-[var(--accent)] text-[var(--accent)]" : "fill-none text-slate-400"}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </button>
             <button
               onClick={handleCopyLink}
-              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer text-slate-400"
+              className="action-btn p-2 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer text-slate-400"
               title="Copy Link"
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 10.742l-1.51 1.51a3 3 0 004.243 4.243l1.51-1.51m2.636-2.636l1.51-1.51a3 3 0 00-4.243-4.243l-1.51 1.51M9 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
               </svg>
             </button>
             {tool.featured && (

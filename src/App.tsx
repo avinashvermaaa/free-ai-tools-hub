@@ -59,9 +59,12 @@ function App() {
 
   // Dynamic Animated Stats Counter
   const [displayCount, setDisplayCount] = useState(showingCount);
+  const displayCountRef = useRef(displayCount);
+  displayCountRef.current = displayCount;
+
   useEffect(() => {
     let startTimestamp: number | null = null;
-    const startValue = displayCount;
+    const startValue = displayCountRef.current;
     const endValue = showingCount;
     const duration = 250; // ms
     let animationFrameId: number;

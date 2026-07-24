@@ -10,7 +10,7 @@ export default function HighlightText({ text, search }: HighlightTextProps) {
     return <>{text}</>;
   }
 
-  const regex = new RegExp(`(${search.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")})`, "gi");
+  const regex = new RegExp(`(${search.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")})`, "gi");
   const parts = text.split(regex);
 
   return (

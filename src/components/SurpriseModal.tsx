@@ -1,4 +1,3 @@
-import React from "react";
 import { Tool } from "../types";
 
 interface SurpriseModalProps {
@@ -15,14 +14,13 @@ export default function SurpriseModal({ isOpen, tool, onClose, onShuffle }: Surp
   const desc = tool.description || tool.desc || "";
   const tags = tool.tags || [];
   const starsCount = tool.stars || "0";
-  const githubLink = tool.github || tool.githubUrl || "#";
   const licenseType = tool.license || "Open Source";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop overlay */}
-      <div 
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" 
+      <div
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 

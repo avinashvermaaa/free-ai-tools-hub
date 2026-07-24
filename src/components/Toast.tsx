@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
 
-export interface ToastMessage {
+interface ToastMessage {
   id: string;
   text: string;
-}
-
-export function triggerToast(text: string) {
-  const event = new CustomEvent("app-toast", { detail: text });
-  window.dispatchEvent(event);
 }
 
 export default function Toast() {

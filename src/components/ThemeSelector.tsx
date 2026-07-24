@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Theme = "yellow" | "purple" | "green" | "pink";
 
@@ -31,11 +31,10 @@ export default function ThemeSelector() {
             key={t.id}
             onClick={() => setTheme(t.id)}
             title={t.name}
-            className={`w-3.5 h-3.5 rounded-full cursor-pointer transition-all duration-300 relative ${t.color} ${
-              theme === t.id
+            className={`w-3.5 h-3.5 rounded-full cursor-pointer transition-all duration-300 relative ${t.color} ${theme === t.id
                 ? "ring-2 ring-white ring-offset-2 ring-offset-[#05050a] scale-110"
                 : "opacity-60 hover:opacity-100 hover:scale-105"
-            }`}
+              }`}
             aria-label={`Switch to ${t.name} theme`}
           />
         ))}
