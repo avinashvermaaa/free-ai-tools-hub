@@ -13,8 +13,12 @@ free-ai-tools-hub/
 ├── src/
 │   ├── assets/              # Logos and UI assets
 │   ├── components/          # Reusable React components
+│   │   ├── BackToTop.tsx    # Floating scroll-to-top button
 │   │   ├── Footer.tsx       # Separate, modular site footer
-│   │   └── ToolCard.tsx     # Card component showing single tool details
+│   │   ├── SubmitDrawer.tsx # Slide-out submission form drawer
+│   │   ├── SurpriseModal.tsx# Random picker shuffle detail overlay
+│   │   ├── ThemeSelector.tsx# Active color theme switcher dots
+│   │   └── ToolCard.tsx     # Card/Row component showing single tool details
 │   ├── constants/           # Database constants
 │   │   ├── index.ts         # Entrypoint mapping category slugs to JSONs
 │   │   └── *.json           # Category JSON database files
@@ -27,7 +31,7 @@ free-ai-tools-hub/
 │   │   └── index.ts         # Codebase-wide TypeScript definitions
 │   ├── utils/               # Shared helper functions
 │   │   └── helpers.ts       # Utility and hashing helpers
-│   ├── App.tsx              # Main dashboard view & routing logic
+│   ├── App.tsx              # Main dashboard view, layout coordination & search
 │   ├── main.tsx             # Application bootstrap & DOM mounting
 │   └── vite-env.d.ts        # Vite client declarations
 ├── index.html               # Main template document
