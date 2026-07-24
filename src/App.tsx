@@ -1,35 +1,48 @@
 import { useState } from "react";
-import toolsData from "./data/index.js";
-import featuredData from "./data/featured.json";
-import ToolCard from "./ToolCard";
+import toolsDataRaw from "./data/index.js";
+import featuredDataRaw from "./data/featured.json";
+import ToolCard, { Tool } from "./ToolCard";
 import "./App.css";
+
+interface Category {
+  title: string;
+  icon: string;
+  slug: string;
+  tools: Tool[];
+  filteredTools?: Tool[];
+  matchesCategory?: boolean;
+}
+
+// Assert types
+const toolsData = toolsDataRaw as Category[];
+const featuredData = featuredDataRaw as Tool[];
 
 // Calculate counts
 const totalTools = toolsData.reduce((sum, cat) => sum + cat.tools.length, 0);
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   // Filter categories and their tools based on active category selection and search query
   const filteredCategories = toolsData
-    .map((cat) => {
+    .map((cat): Category => {
       const matchesCategory = !activeCategory || cat.slug === activeCategory;
       const filtered = cat.tools.filter((tool) => {
         if (!searchQuery) return true;
         const q = searchQuery.toLowerCase();
         return (
           tool.name.toLowerCase().includes(q) ||
-          tool.desc.toLowerCase().includes(q)
+          (tool.description || tool.desc || "").toLowerCase().includes(q)
         );
       });
       return { ...cat, filteredTools: filtered, matchesCategory };
     })
-    .filter((cat) => cat.filteredTools.length > 0 && cat.matchesCategory);
+    .filter((cat) => (cat.filteredTools?.length ?? 0) > 0 && cat.matchesCategory);
 
   // Calculate current showing tools count
   const showingCount = filteredCategories.reduce(
-    (sum, cat) => sum + cat.filteredTools.length,
+    (sum, cat) => sum + (cat.filteredTools?.length ?? 0),
     0
   );
 
@@ -39,7 +52,7 @@ function App() {
     const q = searchQuery.toLowerCase();
     return (
       tool.name.toLowerCase().includes(q) ||
-      tool.desc.toLowerCase().includes(q) ||
+      (tool.description || tool.desc || "").toLowerCase().includes(q) ||
       (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(q)))
     );
   });
@@ -127,7 +140,7 @@ function App() {
               </span>
               <div className="h-[1px] bg-[#262930] grow"></div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {filteredFeatured.map((tool, i) => (
                 <ToolCard key={i} tool={tool} />
               ))}
@@ -152,11 +165,11 @@ function App() {
                   {cat.title}
                 </h2>
                 <span className="text-xs text-[#8b949e] bg-[#12131a] border border-[#262930] rounded-md px-2.5 py-0.5 font-mono font-bold">
-                  {cat.filteredTools.length}
+                  {cat.filteredTools?.length ?? 0}
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {cat.filteredTools.map((tool, i) => (
+                {cat.filteredTools?.map((tool, i) => (
                   <ToolCard
                     key={i}
                     tool={tool}

@@ -1,8 +1,33 @@
 import React from "react";
 
-export default function ToolCard({ tool, categoryName, categoryIcon }) {
+export interface Tool {
+  id: string;
+  name: string;
+  description?: string;
+  desc?: string;
+  url: string;
+  category: string;
+  categoryIcon?: string;
+  tags?: string[];
+  github?: string;
+  githubUrl?: string;
+  license?: string;
+  stars?: number | string;
+  icon?: string;
+  featured?: boolean;
+  addedAt?: string;
+  section?: string;
+}
+
+interface ToolCardProps {
+  tool: Tool;
+  categoryName?: string;
+  categoryIcon?: string;
+}
+
+export default function ToolCard({ tool, categoryName, categoryIcon }: ToolCardProps) {
   // Generate stable mock values for missing data to maintain high visual quality
-  const getStableId = (str) => {
+  const getStableId = (str: string) => {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
       hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -20,7 +45,9 @@ export default function ToolCard({ tool, categoryName, categoryIcon }) {
   ].filter(Boolean).slice(0, 4);
 
   // Fallback for stars
-  const starsCount = tool.stars || `${((hashId % 800) / 10 + 1.2).toFixed(1)}k`;
+  const starsCount = tool.stars !== undefined 
+    ? (typeof tool.stars === "number" ? `${(tool.stars / 1000).toFixed(1)}k` : tool.stars) 
+    : `${((hashId % 800) / 10 + 1.2).toFixed(1)}k`;
 
   // Fallback for license
   const licenseType = tool.license || (hashId % 3 === 0 ? "MIT" : hashId % 3 === 1 ? "AGPL-3.0" : "GPL-3.0");
@@ -29,11 +56,12 @@ export default function ToolCard({ tool, categoryName, categoryIcon }) {
   const displayIcon = tool.icon || categoryIcon || "🧠";
 
   // GitHub repository link fallback
-  const githubLink = tool.githubUrl || `https://github.com/search?q=${encodeURIComponent(tool.name)}`;
+  const githubLink = tool.github || tool.githubUrl || `https://github.com/search?q=${encodeURIComponent(tool.name)}`;
 
-  const handleCardClick = (e) => {
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // If the click is inside a tag or the license link, let the browser handle it
-    if (e.target.closest(".tag-item") || e.target.closest(".license-link")) {
+    const target = e.target as HTMLElement;
+    if (target.closest(".tag-item") || target.closest(".license-link")) {
       return;
     }
     window.open(tool.url, "_blank", "noopener,noreferrer");
@@ -70,7 +98,7 @@ export default function ToolCard({ tool, categoryName, categoryIcon }) {
 
         {/* Description */}
         <p className="text-sm text-[#8b949e] mb-5 line-clamp-2 leading-relaxed">
-          {tool.desc}
+          {tool.description || tool.desc}
         </p>
 
         {/* Tags */}
