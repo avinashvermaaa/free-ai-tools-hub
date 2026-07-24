@@ -1,0 +1,41 @@
+[
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "description": "Conversational AI model by OpenAI for text generation, analysis, and general assistance.",
+    "url": "https://chatgpt.com",
+    "category": "chatbots-assistants",
+    "tags": ["chat", "openai", "gpt4", "assistant"],
+    "github": "https://github.com/openai",
+    "license": "Freemium",
+    "stars": 45000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "claude-ai",
+    "name": "Claude",
+    "description": "Next-generation AI assistant by Anthropic with advanced reasoning, coding, and writing skills.",
+    "url": "https://claude.ai",
+    "category": "chatbots-assistants",
+    "tags": ["anthropic", "claude", "reasoning", "chat"],
+    "github": "https://github.com/anthropics",
+    "license": "Freemium",
+    "stars": 32000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "perplexity-ai",
+    "name": "Perplexity AI",
+    "description": "AI-powered conversational search engine providing direct answers with web source citations.",
+    "url": "https://www.perplexity.ai",
+    "category": "chatbots-assistants",
+    "tags": ["search", "citations", "qa", "research"],
+    "github": "https://github.com/perplexity-ai",
+    "license": "Freemium",
+    "stars": 18500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
+]

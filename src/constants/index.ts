@@ -9,6 +9,9 @@ import videoEditing from "./video-editing.json";
 import audioMusic from "./audio-music.json";
 import education from "./education.json";
 import lists from "./lists.json";
+import chatbotsAssistants from "./chatbots-assistants.json";
+import audioVoice from "./audio-voice.json";
+import automation from "./automation.json";
 
 // Combine video and audio into Media
 const media = [...videoEditing, ...audioMusic];
@@ -23,7 +26,10 @@ const toolsData = [
   { title: "Data & Analytics", icon: "📊", slug: "data-analytics", tools: dataAnalytics },
   { title: "Media", icon: "🎬", slug: "media", tools: media },
   { title: "Education", icon: "🎓", slug: "education", tools: education },
-  { title: "Lists", icon: "📜", slug: "lists", tools: lists }
+  { title: "Lists", icon: "📜", slug: "lists", tools: lists },
+  { title: "Chatbots & Assistants", icon: "🤖", slug: "chatbots-assistants", tools: chatbotsAssistants },
+  { title: "Audio & Voice", icon: "🎙️", slug: "audio-voice", tools: audioVoice },
+  { title: "Automation", icon: "🔌", slug: "automation", tools: automation }
 ];
 
 export default toolsData;

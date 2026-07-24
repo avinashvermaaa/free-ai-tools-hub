@@ -1,0 +1,41 @@
+[
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "description": "Vibrant, ultra-realistic AI voice generation, cloning, and text-to-speech engine.",
+    "url": "https://elevenlabs.io",
+    "category": "audio-voice",
+    "tags": ["voice-cloning", "tts", "speech", "audio"],
+    "github": "https://github.com/elevenlabs",
+    "license": "Freemium",
+    "stars": 24000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "suno",
+    "name": "Suno AI",
+    "description": "Generates complete vocal and instrumental songs from simple text descriptions instantly.",
+    "url": "https://suno.com",
+    "category": "audio-voice",
+    "tags": ["music", "song-generation", "lyrics", "audio"],
+    "github": "https://github.com/suno-ai",
+    "license": "Freemium",
+    "stars": 19000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "speechify",
+    "name": "Speechify",
+    "description": "AI reader that turns any text, document, or book into natural-sounding speech.",
+    "url": "https://speechify.com",
+    "category": "audio-voice",
+    "tags": ["reader", "tts", "audiobook", "accessibility"],
+    "github": "https://github.com/speechify",
+    "license": "Freemium",
+    "stars": 8200,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
+]

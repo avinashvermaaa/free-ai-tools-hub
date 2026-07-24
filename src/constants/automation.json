@@ -1,0 +1,41 @@
+[
+  {
+    "id": "n8n",
+    "name": "n8n.io",
+    "description": "Fair-code node-based workflow automation tool with extensive AI integration options.",
+    "url": "https://n8n.io",
+    "category": "automation",
+    "tags": ["workflow", "no-code", "integration", "self-hosted"],
+    "github": "https://github.com/n8n-io/n8n",
+    "license": "Sustainable Use",
+    "stars": 49000,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "flowise",
+    "name": "Flowise",
+    "description": "Open-source UI visual tool to build customized LLM orchestration flows and AI agents.",
+    "url": "https://flowiseai.com",
+    "category": "automation",
+    "tags": ["langchain", "agents", "no-code", "visual-builder"],
+    "github": "https://github.com/FlowiseAI/Flowise",
+    "license": "Apache-2.0",
+    "stars": 28500,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  },
+  {
+    "id": "activepieces",
+    "name": "Activepieces",
+    "description": "Open-source Zapier alternative designed specifically for business automation and AI runs.",
+    "url": "https://www.activepieces.com",
+    "category": "automation",
+    "tags": ["zapier-alternative", "no-code", "automation", "workflow"],
+    "github": "https://github.com/activepieces/activepieces",
+    "license": "MIT",
+    "stars": 9800,
+    "addedAt": "2026-07-24",
+    "section": "meets-criteria"
+  }
+]
