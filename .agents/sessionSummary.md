@@ -5,12 +5,19 @@
 - G-Repo: `https://github.com/avinashvermaaa/free-ai-tools-hub.git`
 
 ## Completed Upgrades
-1. **Centralized Theme Switcher**: 4 presets (Yellow, Purple, Green, Pink) controlled via `<ThemeSelector />` using `data-theme` and `:root` variables in `index.css`. Glows offloaded to fixed `body::before` to solve scroll lag.
-2. **Grid/List View Toggle**: Layout switch (3-col visual cards vs. high-density list rows) integrated into search bar.
-3. **Category Chips**: Rectangular (`rounded-none`), left-aligned, 3-section formats (icon | label | count) with floating 1px dividers (`w-[1px] h-3 bg-white/15`). Active/hover states match theme colors.
-4. **Staggered Animations**: Lightweight `.fade-up-in` entrance keyframes staggered using calculated inline index delays.
-5. **Interactive overlays**: Floating `<BackToTop />` scroll helper, `<SurpriseModal />` random picker, and `<SubmitDrawer />` GitHub issue form drawer.
-6. **Separate Footer**: Replaced inline markup with dynamic `<Footer />` snug to bottom viewport.
+1. **Centralized Theme Switcher**: 4 presets (Yellow, Purple, Green, Pink) via `<ThemeSelector />`, `:root` variables, `body::before` glows.
+2. **Grid/List View Toggle**: 3-col cards vs. list rows, integrated into search bar.
+3. **Category Chips**: Rectangular, left-aligned, 3-section (icon | label | count) with dividers.
+4. **Staggered Animations**: `.fade-up-in` keyframes with inline index delays.
+5. **Interactive Overlays**: `<BackToTop />`, `<SurpriseModal />`, `<SubmitDrawer />`.
+6. **Separate Footer**: `<Footer />` component flush to bottom.
+7. **Bookmarks / Favorites**: Heart toggle, `localStorage`, "My Bookmarks" filter chip.
+8. **Sort Picker**: Default / Name (A-Z) / Popularity (★) selector in search bar.
+9. **Search Highlights**: `<HighlightText />` wraps matched terms in accent color.
+10. **Toast Notifications**: `<Toast />` manager, `triggerToast()` via `eventBus.ts`.
+11. **Keyboard Shortcuts**: `/` to focus search, `Esc` to clear and blur.
+12. **Animated Stats Counter**: `requestAnimationFrame` roll for showing tools count.
+13. **PWA Support**: `manifest.json`, `sw.js` service worker (cache-first assets, network-first navigation), registered in `main.tsx`. SEO meta tags added to `index.html`.
 
 ## Workspace Guidelines
 - Commit prefixes: `feat :- `, `fix :- `, `chore :- `, `style :- `, `perf :- `, `docs :- `, `test :- `, `refactor :- `.

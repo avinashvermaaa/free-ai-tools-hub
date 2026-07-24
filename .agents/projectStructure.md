@@ -1,48 +1,45 @@
 # Project Structure
 
-This document outlines the organization and static structure of the Free AI Tools Hub workspace.
-
 ```
 free-ai-tools-hub/
 ├── .agents/                 # Workspace agent rules & documentation
-│   ├── AGENTS.md            # Behavioral rules (commit message prefixes, build guidelines)
+│   ├── AGENTS.md            # Behavioral rules (commit prefixes, build guidelines)
 │   ├── Design.md            # UX, design system, and hover tokens
-│   ├── projectStructure.md  # [This File] Codebase structures
+│   ├── newFeatures.md       # Wishlist of planned UI/UX features
+│   ├── projectStructure.md  # [This File]
 │   └── sessionSummary.md    # Log of upgrades completed in each session
-├── public/                  # Static assets (favicons, icons)
+├── public/                  # Static assets
+│   ├── manifest.json        # PWA web app manifest
+│   ├── sw.js                # Service worker (cache-first assets, network-first nav)
+│   └── vite.svg             # App icon
 ├── src/
-│   ├── assets/              # Logos and UI assets
-│   ├── components/          # Reusable React components
+│   ├── components/
 │   │   ├── BackToTop.tsx    # Floating scroll-to-top button
-│   │   ├── Footer.tsx       # Separate, modular site footer
-│   │   ├── SubmitDrawer.tsx # Slide-out submission form drawer
-│   │   ├── SurpriseModal.tsx# Random picker shuffle detail overlay
-│   │   ├── ThemeSelector.tsx# Active color theme switcher dots
-│   │   └── ToolCard.tsx     # Card/Row component showing single tool details
+│   │   ├── Footer.tsx       # Site footer
+│   │   ├── HighlightText.tsx# Highlight matched search terms inline
+│   │   ├── SubmitDrawer.tsx # Slide-out GitHub issue form drawer
+│   │   ├── SurpriseModal.tsx# Random tool picker overlay
+│   │   ├── ThemeSelector.tsx# Color theme switcher dots
+│   │   ├── Toast.tsx        # Toast notification manager
+│   │   └── ToolCard.tsx     # Card/Row component for tool details
 │   ├── constants/           # Database constants
-│   │   ├── index.ts         # Entrypoint mapping category slugs to JSONs
+│   │   ├── index.ts         # Category slug-to-JSON mapper
 │   │   └── *.json           # Category JSON database files
-│   ├── hooks/               # Custom React hooks
-│   │   └── useTools.ts      # Filtering, search, and state logic for tools
-│   ├── styles/              # Layout and theme styles
+│   ├── hooks/
+│   │   └── useTools.ts      # Filtering, search, bookmarks, and sorting logic
+│   ├── styles/
 │   │   ├── App.css          # Main layout stylesheet
-│   │   └── index.css        # Centralized CSS variables theme and custom scrollbar
-│   ├── types/               # TypeScript interfaces
-│   │   └── index.ts         # Codebase-wide TypeScript definitions
-│   ├── utils/               # Shared helper functions
+│   │   └── index.css        # CSS variables, themes, scrollbar, animations
+│   ├── types/
+│   │   └── index.ts         # TypeScript interfaces (Tool, Category)
+│   ├── utils/
+│   │   ├── eventBus.ts      # Global event dispatcher (triggerToast)
 │   │   └── helpers.ts       # Utility and hashing helpers
-│   ├── App.tsx              # Main dashboard view, layout coordination & search
-│   ├── main.tsx             # Application bootstrap & DOM mounting
+│   ├── App.tsx              # Main dashboard layout & coordination
+│   ├── main.tsx             # App bootstrap, DOM mount, SW registration
 │   └── vite-env.d.ts        # Vite client declarations
-├── index.html               # Main template document
-├── package.json             # Package scripts & dependencies
-├── tsconfig.json            # TypeScript configuration
-└── vite.config.js           # Vite build parameters
+├── index.html               # HTML template (manifest, SEO meta, theme-color)
+├── package.json
+├── tsconfig.json
+└── vite.config.js
 ```
-
-## Data Mapping Architecture
-
-The `src/constants/index.ts` file serves as the coordinator:
-1. Imports category JSON arrays (each holding objects matching the `Tool` interface).
-2. Exports a `toolsData` array binding category names, symbols/icons, slugs, and tool listings.
-3. Used inside `App.tsx` for building filter chips and category headings dynamically.
