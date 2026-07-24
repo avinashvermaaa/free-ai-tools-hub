@@ -1,16 +1,23 @@
-# React + Vite
+# 🧠 Free AI Tools Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A premium, highly interactive dashboard that indexes and organizes top-tier free and freemium AI tools and utilities for creators, developers, and writers.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Featured Showcase**: Curated selection of high-profile tools highlighted prominently on top.
+- **Dynamic Search**: Instant filtering across names, descriptions, and hashtags with red caret CLI-style UI.
+- **Multi-Category Navigation**: Clean outline chips filtering tools dynamically by category.
+- **Type Safety**: Migrated entirely to TypeScript for robust type assertions and compilation safety.
+- **Modern Dark UI**: Slick dark design with smooth radial gradients, hover indicators, and animated bottom accent borders.
 
-## React Compiler
+## 🛠️ Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: React 19 + TypeScript
+- **Build Engine**: Vite 8 / client compilation
+- **Style Engine**: Tailwind CSS v4
 
-## Expanding the Oxlint configuration
+## 📦 Scripts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Development Server**: `npm run dev`
+- **Production Build**: `npm run build`
+- **Local Preview**: `npm run preview`
