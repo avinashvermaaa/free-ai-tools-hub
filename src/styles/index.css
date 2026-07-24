@@ -44,11 +44,21 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.04) 0%, transparent 50%),
     radial-gradient(circle at 90% 20%, rgba(250, 204, 21, 0.01) 0%, transparent 40%),
     radial-gradient(circle at 10% 80%, rgba(250, 204, 21, 0.01) 0%, transparent 45%);
-  background-attachment: fixed;
+  pointer-events: none;
 }
 
 /* Custom Scrollbar */
