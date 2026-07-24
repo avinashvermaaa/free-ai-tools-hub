@@ -1,6 +1,8 @@
 import React from "react";
 import { Tool } from "../types";
 import { getStableId } from "../utils/helpers";
+import HighlightText from "./HighlightText";
+import { triggerToast } from "./Toast";
 
 interface ToolCardProps {
   tool: Tool;
@@ -8,9 +10,21 @@ interface ToolCardProps {
   categoryIcon?: string;
   viewMode?: "grid" | "list";
   index?: number;
+  isBookmarked?: boolean;
+  onToggleBookmark?: () => void;
+  searchQuery?: string;
 }
 
-export default function ToolCard({ tool, categoryName, categoryIcon, viewMode = "grid", index }: ToolCardProps) {
+export default function ToolCard({
+  tool,
+  categoryName,
+  categoryIcon,
+  viewMode = "grid",
+  index,
+  isBookmarked = false,
+  onToggleBookmark,
+  searchQuery = ""
+}: ToolCardProps) {
   const hashId = getStableId(tool.name);
 
   // Fallback for tags
@@ -36,15 +50,30 @@ export default function ToolCard({ tool, categoryName, categoryIcon, viewMode = 
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
-    if (target.closest(".tag-item") || target.closest(".license-link")) {
+    if (target.closest(".action-btn") || target.closest(".tag-item") || target.closest(".license-link")) {
       return;
     }
     window.open(tool.url, "_blank", "noopener,noreferrer");
   };
 
-  const animationDelay = index !== undefined ? `${index * 0.04}s` : "0s";
+  const handleCopyLink = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(tool.url);
+    triggerToast(`Copied ${tool.name} link to clipboard!`);
+  };
+
+  const handleBookmarkToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onToggleBookmark) {
+      onToggleBookmark();
+      triggerToast(isBookmarked ? `Removed ${tool.name} from bookmarks` : `Saved ${tool.name} to bookmarks!`);
+    }
+  };
+
+  const animationDelay = index !== undefined ? `${index * 0.03}s` : "0s";
   const desc = tool.description || tool.desc || "";
 
+  // Grid/List views
   if (viewMode === "list") {
     return (
       <div
@@ -60,20 +89,42 @@ export default function ToolCard({ tool, categoryName, categoryIcon, viewMode = 
           <div className="min-w-0 flex-1 md:flex md:items-center md:gap-6">
             <h3 className="font-bold text-sm md:text-base text-[var(--card-title)] transition-colors duration-200 flex items-center gap-1.5 shrink-0">
               <span className="truncate group-hover:text-[var(--card-title-hover)]">
-                {tool.name}
+                <HighlightText text={tool.name} search={searchQuery} />
               </span>
               <span className="text-xs opacity-40 group-hover:opacity-100 group-hover:text-[var(--card-title-hover)] transition-all duration-200 transform translate-x-[-2px] group-hover:translate-x-0">
                 ↗
               </span>
             </h3>
             <p className="text-xs text-[var(--card-text)] line-clamp-1 leading-relaxed hidden md:block">
-              {desc}
+              <HighlightText text={desc} search={searchQuery} />
             </p>
           </div>
         </div>
 
         {/* Right: Meta Info & Actions */}
-        <div className="flex items-center gap-5 text-xs shrink-0">
+        <div className="flex items-center gap-4 text-xs shrink-0">
+          {/* Action Buttons */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={handleBookmarkToggle}
+              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer"
+              title={isBookmarked ? "Remove Bookmark" : "Add Bookmark"}
+            >
+              <svg className={`w-3.5 h-3.5 ${isBookmarked ? "fill-[var(--accent)] text-[var(--accent)]" : "fill-none text-slate-400"}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+            <button
+              onClick={handleCopyLink}
+              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer text-slate-400"
+              title="Copy Link"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 10.742l-1.51 1.51a3 3 0 004.243 4.243l1.51-1.51m2.636-2.636l1.51-1.51a3 3 0 00-4.243-4.243l-1.51 1.51M9 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </button>
+          </div>
+
           {/* Tags */}
           <div className="flex gap-1.5 hidden lg:flex">
             {tags.slice(0, 2).map((tag, i) => (
@@ -126,7 +177,7 @@ export default function ToolCard({ tool, categoryName, categoryIcon, viewMode = 
             <div className="min-w-0 flex-1">
               <h3 className="font-bold text-lg text-[var(--card-title)] transition-colors duration-200 flex items-center gap-1.5">
                 <span className="truncate group-hover:text-[var(--card-title-hover)]">
-                  {tool.name}
+                  <HighlightText text={tool.name} search={searchQuery} />
                 </span>
                 <span className="text-sm opacity-40 group-hover:opacity-100 group-hover:text-[var(--card-title-hover)] transition-all duration-200 transform translate-x-[-2px] group-hover:translate-x-0">
                   ↗
@@ -134,16 +185,36 @@ export default function ToolCard({ tool, categoryName, categoryIcon, viewMode = 
               </h3>
             </div>
           </div>
-          {tool.featured && (
-            <span className="bg-[var(--accent)] text-black text-[9px] font-extrabold px-2.5 py-0.5 rounded-full tracking-wider uppercase shrink-0 shadow-sm shadow-[var(--accent)]/10">
-              FEATURED
-            </span>
-          )}
+          <div className="flex items-center gap-1.5 shrink-0 ml-2">
+            <button
+              onClick={handleBookmarkToggle}
+              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer"
+              title={isBookmarked ? "Remove Bookmark" : "Add Bookmark"}
+            >
+              <svg className={`w-3.5 h-3.5 ${isBookmarked ? "fill-[var(--accent)] text-[var(--accent)]" : "fill-none text-slate-400"}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+            <button
+              onClick={handleCopyLink}
+              className="action-btn p-1.5 rounded-lg border border-white/[0.05] bg-white/[0.02] hover:bg-[var(--accent)]/[0.06] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all cursor-pointer text-slate-400"
+              title="Copy Link"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 10.742l-1.51 1.51a3 3 0 004.243 4.243l1.51-1.51m2.636-2.636l1.51-1.51a3 3 0 00-4.243-4.243l-1.51 1.51M9 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </button>
+            {tool.featured && (
+              <span className="bg-[var(--accent)] text-black text-[9px] font-extrabold px-2.5 py-0.5 rounded-full tracking-wider uppercase shadow-sm shadow-[var(--accent)]/10">
+                FEATURED
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Description */}
         <p className="text-sm text-[var(--card-text)] mb-5 line-clamp-2 leading-relaxed">
-          {desc}
+          <HighlightText text={desc} search={searchQuery} />
         </p>
 
         {/* Tags */}

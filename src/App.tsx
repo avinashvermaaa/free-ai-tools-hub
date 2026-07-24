@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import toolsDataRaw from "./constants/index";
 import featuredDataRaw from "./constants/featured.json";
 import ToolCard from "./components/ToolCard";
@@ -7,6 +7,7 @@ import ThemeSelector from "./components/ThemeSelector";
 import BackToTop from "./components/BackToTop";
 import SurpriseModal from "./components/SurpriseModal";
 import SubmitDrawer from "./components/SubmitDrawer";
+import Toast from "./components/Toast";
 import { Tool, Category } from "./types";
 import { useTools } from "./hooks/useTools";
 import "./styles/App.css";
@@ -25,6 +26,8 @@ function App() {
   const [isSurpriseOpen, setIsSurpriseOpen] = useState(false);
   const [surpriseTool, setSurpriseTool] = useState<Tool | null>(null);
 
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
   const {
     searchQuery,
     setSearchQuery,
@@ -32,8 +35,50 @@ function App() {
     setActiveCategory,
     filteredCategories,
     showingCount,
-    filteredFeatured
+    filteredFeatured,
+    bookmarks,
+    toggleBookmark,
+    sortBy,
+    setSortBy
   } = useTools(toolsData, featuredData);
+
+  // Keyboard Shortcuts: '/' to focus, 'Esc' to clear & blur
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "/" && document.activeElement !== searchInputRef.current) {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      } else if (e.key === "Escape") {
+        setSearchQuery("");
+        searchInputRef.current?.blur();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [setSearchQuery]);
+
+  // Dynamic Animated Stats Counter
+  const [displayCount, setDisplayCount] = useState(showingCount);
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    const startValue = displayCount;
+    const endValue = showingCount;
+    const duration = 250; // ms
+    let animationFrameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const currentValue = Math.floor(progress * (endValue - startValue) + startValue);
+      setDisplayCount(currentValue);
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      }
+    };
+
+    animationFrameId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [showingCount]);
 
   const handleSurprise = () => {
     const allTools = toolsData.flatMap((cat) => cat.tools);
@@ -42,6 +87,27 @@ function App() {
     setSurpriseTool(randomTool);
     setIsSurpriseOpen(true);
   };
+
+  const handleCategorySelect = (slug: string | null) => {
+    setActiveCategory(activeCategory === slug ? null : slug);
+    if (slug && slug !== "bookmarks") {
+      setTimeout(() => {
+        const element = document.getElementById(`category-${slug}`);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 120);
+    }
+  };
+
+  // Helper to extract tool ID (name is stable/clean)
+  const getToolId = (tool: Tool) => tool.id || tool.name;
 
   return (
     <div className="min-h-screen pb-0 w-full flex flex-col items-center justify-between">
@@ -73,15 +139,17 @@ function App() {
         </h1>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mb-10 leading-relaxed">
           Discover a hand-picked, curated collection of free and open-source artificial intelligence tools to supercharge your workflow.
+          <span className="block mt-2 text-xs text-slate-500 font-mono">Press <kbd className="px-1.5 py-0.5 bg-white/[0.05] border border-white/10 rounded font-semibold text-slate-400 font-sans">/</kbd> to search, <kbd className="px-1.5 py-0.5 bg-white/[0.05] border border-white/10 rounded font-semibold text-slate-400 font-sans">Esc</kbd> to clear.</span>
         </p>
 
         {/* Search Bar Container */}
         <div className="w-full mb-8">
-          <div className="flex items-center gap-3 px-4.5 py-3.5 bg-white/[0.01] border border-white/[0.06] rounded-2xl focus-within:border-[var(--accent)]/30 focus-within:bg-white/[0.02] focus-within:shadow-[0_0_30px_var(--card-shadow-hover)] transition-all duration-300">
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-3.5 px-4.5 py-3.5 bg-white/[0.01] border border-white/[0.06] rounded-2xl focus-within:border-[var(--accent)]/30 focus-within:bg-white/[0.02] focus-within:shadow-[0_0_30px_var(--card-shadow-hover)] transition-all duration-300">
             <svg className="w-5 h-5 text-[var(--accent)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
+              ref={searchInputRef}
               type="text"
               className="w-full bg-transparent text-slate-100 placeholder:text-slate-500 outline-none text-sm font-medium"
               placeholder="Search tools by name, tag, or description..."
@@ -90,13 +158,31 @@ function App() {
             />
             {searchQuery && (
               <button
-                className="text-slate-400 hover:text-white text-xs px-2 py-1 rounded-md bg-white/[0.06] hover:bg-white/[0.1] transition-colors"
+                className="text-slate-400 hover:text-white text-xs px-2 py-1 rounded-md bg-white/[0.06] hover:bg-white/[0.1] transition-colors cursor-pointer"
                 onClick={() => setSearchQuery("")}
               >
                 ✕
               </button>
             )}
-            <div className="w-[1px] h-5 bg-white/10 shrink-0 mx-1" />
+            <div className="w-[1px] h-5 bg-white/10 shrink-0 mx-1 hidden md:block" />
+            
+            {/* Sort Options */}
+            <div className="flex items-center gap-1.5 bg-white/[0.02] border border-white/[0.06] rounded-xl px-2.5 py-1 z-10">
+              <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-wider font-mono">Sort:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="bg-transparent text-xs text-slate-300 font-bold outline-none cursor-pointer hover:text-white border-none py-0.5 pr-1"
+              >
+                <option value="default" className="bg-[#0b0b14] text-slate-300">Default</option>
+                <option value="name" className="bg-[#0b0b14] text-slate-300">Name (A-Z)</option>
+                <option value="stars" className="bg-[#0b0b14] text-slate-300">Popularity (★)</option>
+              </select>
+            </div>
+
+            <div className="w-[1px] h-5 bg-white/10 shrink-0 mx-1 hidden md:block" />
+            
+            {/* Grid/List Switcher */}
             <div className="flex items-center gap-1 shrink-0">
               <button
                 onClick={() => setViewMode("grid")}
@@ -123,7 +209,7 @@ function App() {
         {/* Category Chips */}
         <div className="flex flex-wrap justify-start gap-2 mb-10 w-full">
           <button
-            onClick={() => setActiveCategory(null)}
+            onClick={() => handleCategorySelect(null)}
             className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
               activeCategory === null
                 ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-[var(--accent)]/10"
@@ -140,12 +226,31 @@ function App() {
               {totalTools}
             </span>
           </button>
+
+          {/* Bookmarks Filter Tab */}
+          <button
+            onClick={() => handleCategorySelect(activeCategory === "bookmarks" ? null : "bookmarks")}
+            className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
+              activeCategory === "bookmarks"
+                ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-[var(--accent)]/10"
+                : "bg-white/[0.02] text-slate-200 border-white/[0.05] hover:border-transparent hover:bg-[var(--accent)] hover:text-black"
+            }`}
+          >
+            <span className="text-sm shrink-0">❤️</span>
+            <span className={`w-[1px] h-3 shrink-0 transition-colors ${activeCategory === "bookmarks" ? 'bg-black/20' : 'bg-white/15 group-hover:bg-black/20'}`} />
+            <span className="font-semibold">My Bookmarks</span>
+            <span className={`w-[1px] h-3 shrink-0 transition-colors ${activeCategory === "bookmarks" ? 'bg-black/20' : 'bg-white/15 group-hover:bg-black/20'}`} />
+            <span className={`font-mono text-[10px] transition-colors ${
+              activeCategory === "bookmarks" ? 'text-black font-extrabold' : 'text-slate-300 group-hover:text-black group-hover:font-extrabold'
+            }`}>
+              {bookmarks.length}
+            </span>
+          </button>
+
           {toolsData.map((cat) => (
             <button
               key={cat.slug}
-              onClick={() =>
-                setActiveCategory(activeCategory === cat.slug ? null : cat.slug)
-              }
+              onClick={() => handleCategorySelect(cat.slug)}
               className={`group flex items-center gap-3 px-4 py-2 rounded-none text-xs font-bold border transition-all cursor-pointer ${
                 activeCategory === cat.slug
                   ? "bg-[var(--accent)] text-black border-transparent shadow-md shadow-[var(--accent)]/10"
@@ -165,9 +270,9 @@ function App() {
           ))}
         </div>
 
-        {/* Showing statistics row */}
+        {/* Showing statistics row with dynamic animated counter */}
         <div className="text-md tracking-widest text-slate-500 font-mono font-bold text-center uppercase">
-          ✦ SHOWING {showingCount} OF {totalTools} TOOLS ✦
+          ✦ SHOWING {displayCount} OF {totalTools} TOOLS ✦
         </div>
       </header>
 
@@ -185,7 +290,15 @@ function App() {
             </div>
             <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-3 gap-6" : "grid grid-cols-1 gap-3.5"}>
               {filteredFeatured.map((tool, i) => (
-                <ToolCard key={i} tool={tool} viewMode={viewMode} index={i} />
+                <ToolCard
+                  key={i}
+                  tool={tool}
+                  viewMode={viewMode}
+                  index={i}
+                  isBookmarked={bookmarks.includes(getToolId(tool))}
+                  onToggleBookmark={() => toggleBookmark(getToolId(tool))}
+                  searchQuery={searchQuery}
+                />
               ))}
             </div>
           </div>
@@ -197,12 +310,12 @@ function App() {
             <div className="text-center py-20 bg-white/[0.01] border border-white/[0.05] rounded-3xl w-full max-w-lg mx-auto">
               <div className="text-4xl mb-4">🔍</div>
               <p className="text-slate-400 text-sm font-semibold">
-                No tools found matching your search.
+                No tools found matching your criteria.
               </p>
             </div>
           ) : (
             filteredCategories.map((cat) => (
-              <section key={cat.slug} className="mb-16 w-full">
+              <section key={cat.slug} id={`category-${cat.slug}`} className="mb-16 w-full scroll-mt-24">
                 <div className="flex items-center gap-2.5 mb-8 pb-3 border-b border-white/[0.03]">
                   <span className="text-2xl">{cat.icon}</span>
                   <h2 className="text-xl font-bold text-[var(--category-title)]">
@@ -221,6 +334,9 @@ function App() {
                       categoryIcon={cat.icon}
                       viewMode={viewMode}
                       index={i}
+                      isBookmarked={bookmarks.includes(getToolId(tool))}
+                      onToggleBookmark={() => toggleBookmark(getToolId(tool))}
+                      searchQuery={searchQuery}
                     />
                   ))}
                 </div>
@@ -254,6 +370,7 @@ function App() {
         isOpen={isSubmitOpen} 
         onClose={() => setIsSubmitOpen(false)} 
       />
+      <Toast />
     </div>
   );
 }
